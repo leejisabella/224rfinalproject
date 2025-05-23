@@ -1,5 +1,0 @@
--e .
--r requirements.txt
-pylint>=2.3.0
-pytest
-pytest-xdist
