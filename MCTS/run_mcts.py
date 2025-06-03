@@ -47,7 +47,9 @@ def evaluate_agent(agent, num_games=5):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--log_file")
     parser.add_argument("--cross_entropy", action='store_true')
+    parser.add_argument("--chosen_c_param")
     args = parser.parse_args()
 
     if args.cross_entropy:
@@ -86,69 +88,82 @@ if __name__ == "__main__":
         print(f"\nOptimal c_param found: {best_c_param:.4f}")
 
     else:
-        num_runs = 10
+        with open(args.log_file, "w") as f:
+            num_runs = 50
 
-        total_p_points, total_b_points = 0, 0
-        total_p_wins, total_b_wins = 0, 0
+            total_p_points, total_b_points = 0, 0
+            total_p_wins, total_b_wins = 0, 0
 
-        for run in tqdm(range(num_runs)):
-            game = OpenFaceChinesePoker()
-            agent = MCTSAgent(num_simulations=50)
+            for run in tqdm(range(num_runs)):
+                game = OpenFaceChinesePoker()
+                agent = MCTSAgent(num_simulations=50, c_param=args.chosen_c_param)
 
-            player_initial, bot_initial = game.initial_deal()
+                player_initial, bot_initial = game.initial_deal()
 
-            print("Initial Deals:")
-            print(player_initial)
-            print(bot_initial)
+                print("Initial Deals:")
+                print(player_initial)
+                print(bot_initial)
 
-            # Use MCTS to find the optimal initial placement
-            best_initial_move = find_best_initial_placement(game, player_initial)
-            bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
+                # Use MCTS to find the optimal initial placement
+                best_initial_move = find_best_initial_placement(game, player_initial)
+                bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
 
-            game.play_round(best_initial_move, bot_move)
+                game.play_round(best_initial_move, bot_move)
 
-            while not game.game_over():
-                player_card, bot_card = game.deal_next_cards()
-                # print("New cards:")
-                # print(player_card)
-                # print(bot_card)
+                while not game.game_over():
+                    player_card, bot_card = game.deal_next_cards()
+                    # print("New cards:")
+                    # print(player_card)
+                    # print(bot_card)
 
-                # Explicitly returns the chosen position (top, middle, or bottom)
-                chosen_pos = agent.search(game, player_card[0])
-                move = {'cards': [player_card[0]], 'positions': [(chosen_pos, player_card[0])]}
+                    # Explicitly returns the chosen position (top, middle, or bottom)
+                    chosen_pos = agent.search(game, player_card[0])
+                    move = {'cards': [player_card[0]], 'positions': [(chosen_pos, player_card[0])]}
 
-                bot_move = random_bot_agent(game.bot_hand, bot_card, game.player_hand)
-                game.play_round(move, bot_move)
+                    bot_move = random_bot_agent(game.bot_hand, bot_card, game.player_hand)
+                    game.play_round(move, bot_move)
 
-                print("Player Hand at end of round:")
-                print(game.player_hand.top)
-                print(game.player_hand.middle)
-                print(game.player_hand.bottom)
-                print("Bot Hand at end of round:")
-                print(game.bot_hand.top)
-                print(game.bot_hand.middle)
-                print(game.bot_hand.bottom)
-                print("")
+                    print("Player Hand at end of round:")
+                    print(game.player_hand.top)
+                    print(game.player_hand.middle)
+                    print(game.player_hand.bottom)
+                    print("Bot Hand at end of round:")
+                    print(game.bot_hand.top)
+                    print(game.bot_hand.middle)
+                    print(game.bot_hand.bottom)
+                    print("")
 
-            player_points, bot_points = game.calculate_scores()
-            print("Final Scores:")
-            print(f"Player (MCTS Agent): {player_points}")
-            print(f"Bot (Random Agent): {bot_points}")
+                player_points, bot_points = game.calculate_scores()
+                print("Final Scores:")
+                print(f"Player (MCTS Agent): {player_points}")
+                print(f"Bot (Random Agent): {bot_points}")
 
-            total_p_points += player_points
-            total_b_points += bot_points
+                total_p_points += player_points
+                total_b_points += bot_points
 
-            if player_points > bot_points:
-                total_p_wins += 1
-            if player_points < bot_points:
-                total_b_wins += 1
+                if player_points > bot_points:
+                    total_p_wins += 1
+                if player_points < bot_points:
+                    total_b_wins += 1
 
-        print(f"Player Total Points: {str(total_p_points)}")
-        print(f"Bot Total Points: {str(total_b_points)}")
+            print(f"Player Total Points: {str(total_p_points)}")
+            print(f"Bot Total Points: {str(total_b_points)}")
 
-        print(f"Player Average Points: {str(total_p_points / num_runs)}")
-        print(f"Bot Average Points: {str(total_b_points / num_runs)}")
+            print(f"Player Average Points: {str(total_p_points / num_runs)}")
+            print(f"Bot Average Points: {str(total_b_points / num_runs)}")
 
-        print(f"Player Num Wins: {str(total_p_wins)}")
-        print(f"Player Winrate: {str(total_p_wins / num_runs)}")
-        print(f"Bot Num Wins: {str(total_b_wins)}")
+            print(f"Player Num Wins: {str(total_p_wins)}")
+            print(f"Player Winrate: {str(total_p_wins / num_runs)}")
+            print(f"Bot Num Wins: {str(total_b_wins)}")
+
+            # written results
+            f.write("\n--- MCTS Summary ---\n")
+            f.write(f"c_param: {args.chosen_c_param}")
+            f.write(f"Total MCTS Points: {total_p_points}\n")
+            f.write(f"Total Bot Points: {total_b_points}\n")
+            f.write(f"Average MCTS Points: {total_p_points / num_runs:.2f}\n")
+            f.write(f"Average Bot Points: {total_b_points / num_runs:.2f}\n")
+            f.write(f"MCTS Wins: {total_p_wins}/{num_runs} ({100 * total_p_wins / num_runs:.1f}%)\n")
+            f.write(f"Bot Wins: {total_b_wins}/{num_runs} ({100 * total_b_wins / num_runs:.1f}%)\n")
+
+            print("\nEvaluation results saved to:", args.log_file)
