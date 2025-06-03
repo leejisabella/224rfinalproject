@@ -94,4 +94,4 @@ class MCTSAgent:
                 break
 
         player_points, bot_points = state.calculate_scores()  # Use new direct scoring method
-        return player_points - bot_points
+        return player_points

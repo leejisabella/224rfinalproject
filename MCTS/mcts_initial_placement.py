@@ -78,5 +78,5 @@ def find_best_initial_placement(existing_game_state, cards):
             best_score = score
             best_move = move
 
-    print("Best initial placement:", best_move)
+    # print("Best initial placement:", best_move)
     return best_move
