@@ -1,0 +1,232 @@
+import random
+from collections import namedtuple, Counter
+from itertools import combinations
+
+# Basic card representation
+Card = namedtuple('Card', ['rank', 'suit'])
+
+
+# Poker hand rankings helper
+def evaluate_hand(cards):
+    ranks = '23456789TJQKA'
+    rank_values = {r: i for i, r in enumerate(ranks, 2)}
+
+    def hand_rank(cards):
+        counts = Counter(card.rank for card in cards)
+        suits = [card.suit for card in cards]
+        rank_counts = sorted(counts.values(), reverse=True)
+
+        if len(cards) == 1:
+            return (0, sorted([rank_values[card.rank] for card in cards], reverse=True))
+
+        if len(cards) == 2:
+            # Pair
+            if rank_counts == [2]:
+                return (1, rank_values[max(counts, key=lambda k: (counts[k], rank_values[k]))])
+            # High card
+            return (0, sorted([rank_values[card.rank] for card in cards], reverse=True))
+
+        if len(cards) == 3:
+            # 3 of a kind
+            if rank_counts == [3]:
+                return (3, rank_values[max(counts, key=counts.get)])
+            # Pair
+            if rank_counts == [2, 1]:
+                return (1, rank_values[max(counts, key=lambda k: (counts[k], rank_values[k]))])
+            # High card
+            return (0, sorted([rank_values[card.rank] for card in cards], reverse=True))
+        
+        if len(cards) == 4:
+            # 3 of a kind
+            if rank_counts == [3, 1]:
+                return (3, rank_values[max(counts, key=counts.get)])
+            # 2 Pair
+            if rank_counts == [2, 2]:
+                pairs = sorted([rank_values[r] for r, c in counts.items() if c == 2], reverse=True)
+                return (2, pairs)
+            # Pair
+            if rank_counts == [2, 1, 1]:
+                return (1, rank_values[max(counts, key=counts.get)])
+            # High card
+            return (0, sorted([rank_values[card.rank] for card in cards], reverse=True))
+
+        is_flush = (len(set(suits)) == 1 and len(cards) == 5)
+        sorted_ranks = sorted([rank_values[card.rank] for card in cards])
+        is_straight = (sorted_ranks == list(range(sorted_ranks[0], sorted_ranks[0] + 5)) and len(cards) == 5)
+
+        if is_straight and is_flush:
+            return (8, sorted_ranks[-1])
+        if rank_counts == [4, 1]:
+            return (7, rank_values[max(counts, key=counts.get)])
+        if rank_counts == [3, 2]:
+            return (6, rank_values[max(counts, key=counts.get)])
+        if is_flush:
+            return (5, sorted_ranks[::-1])
+        if is_straight:
+            return (4, sorted_ranks[-1])
+        # 3 of a kind
+        if rank_counts == [3, 1, 1]:
+            return (3, rank_values[max(counts, key=counts.get)])
+        # 2 Pair
+        if rank_counts == [2, 2, 1]:
+            pairs = sorted([rank_values[r] for r, c in counts.items() if c == 2], reverse=True)
+            return (2, pairs)
+        # Pair
+        if rank_counts == [2, 1, 1, 1]:
+            return (1, rank_values[max(counts, key=counts.get)])
+        # High card
+        return (0, sorted_ranks[::-1])
+
+    return hand_rank(cards)
+
+# Returns 1 if hand 1 is better, 2 if hand 2 is better, 0 if tie
+def compare_hands(hand_1, hand_2):
+    if hand_1 > hand_2:
+        return 1
+    elif hand_1 < hand_2:
+        return 2
+    else:
+        return 0
+
+class Deck:
+    ranks = '23456789TJQKA'
+    suits = 'CDHS'
+
+    def __init__(self):
+        self.cards = [Card(r, s) for r in self.ranks for s in self.suits]
+        random.shuffle(self.cards)
+
+    def draw(self, n=1):
+        return [self.cards.pop() for _ in range(n)]
+
+
+class OFCHand:
+    def __init__(self):
+        self.top = []
+        self.middle = []
+        self.bottom = []
+
+    def place_cards(self, cards, positions):
+        # positions = [('top', card), ('middle', card), ('bottom', card)]
+        for pos, card in positions:
+            getattr(self, pos).append(card)
+
+    def valid_hand(self):
+        if not self.is_complete():
+            return False
+        top_strength = evaluate_hand(self.top)
+        middle_strength = evaluate_hand(self.middle)
+        bottom_strength = evaluate_hand(self.bottom)
+        return bottom_strength >= middle_strength >= top_strength
+
+    def is_complete(self):
+        return len(self.top) == 3 and len(self.middle) == 5 and len(self.bottom) == 5
+    
+    def count_points(self):
+        top_strength = evaluate_hand(self.top)
+        middle_strength = evaluate_hand(self.middle)
+        bottom_strength = evaluate_hand(self.bottom)
+        return (bottom_strength, middle_strength, top_strength)
+
+class OpenFaceChinesePoker:
+    def __init__(self):
+        self.deck = Deck()
+        self.player_hand = OFCHand()
+        self.bot_hand = OFCHand()
+
+    def initial_deal(self):
+        return self.deck.draw(5), self.deck.draw(5)
+
+    def play_round(self, player_moves, bot_moves):
+        self.player_hand.place_cards(player_moves['cards'], player_moves['positions'])
+        self.bot_hand.place_cards(bot_moves['cards'], bot_moves['positions'])
+
+    def deal_next_cards(self):
+        return self.deck.draw(1), self.deck.draw(1)
+
+    def game_over(self):
+        return self.player_hand.is_complete() and self.bot_hand.is_complete()
+
+    def simulate_game(self, player_agent, bot_agent):
+        player_initial, bot_initial = self.initial_deal()
+        print("Player initial cards:", player_initial)
+        print("Bot initial cards:", bot_initial)
+
+        # Place the first five cards. Each player receives (their hand, drawn card, opponent hand)
+        # Hence, open face chinese poker
+        player_move = player_agent(self.player_hand, player_initial, self.bot_hand)
+        bot_move = bot_agent(self.bot_hand, bot_initial, self.player_hand)
+        self.play_round(player_move, bot_move)
+
+        while not self.game_over():
+            player_card, bot_card = self.deal_next_cards()
+
+            # Player would choose move manually or via agent
+            player_move = player_agent(self.player_hand, player_card, self.bot_hand)
+
+            # Bot move via agent provided
+            bot_move = bot_agent(self.bot_hand, bot_card, self.player_hand)
+
+            self.play_round(player_move, bot_move)
+
+        print("Game over")
+        print("Player hand:", self.player_hand.__dict__)
+        print("Bot hand:", self.bot_hand.__dict__)
+
+        player_points = 0
+        bot_points = 0
+
+        # Determine fouls
+        fouls = (False, False)
+        if not self.player_hand.valid_hand():
+            fouls[0] = True
+        if not self.bot_hand.valid_hand():
+            fouls[1] = True
+
+        if not fouls[0] and not fouls[1]:
+            player_points += 6
+            bot_points += 6
+        if not fouls[0] and fouls[1]:
+            player_points += 6
+            bot_points -= 6
+        if fouls[0] and not fouls[1]:
+            player_points -= 6
+            bot_points += 6
+
+        # If someone didn't foul:
+        player_hand_values = ((0, [0]), (0, [0]), (0, [0]))
+        bot_hand_values = ((0, [0]), (0, [0]), (0, [0]))
+        if not fouls[0]: 
+            player_hand_values = self.player_hand.count_points()
+        if not fouls[1]:
+            bot_hand_values = self.bot_hand.count_points()
+        player_hands_won = 0
+        tied_hands = 0
+
+        for i in range(0, 3):
+            if compare_hands(player_hand_values[i], bot_hand_values[i]) == 1:
+                player_points += 1
+                player_hands_won += 1
+            elif compare_hands(player_hand_values[i], bot_hand_values[i]) == 2:
+                bot_points += 1
+            else:
+                tied_hands += 1
+        
+        if player_hands_won == 3:
+            player_points += 3
+        if player_hands_won == 0 and tied_hands == 0:
+            bot_points += 3
+
+        return player_points, bot_points
+
+
+# Simple agent example for bot decisions
+def random_bot_agent(hand, card, opponent_hand):
+    positions = ['top', 'middle', 'bottom']
+    chosen_pos = random.choice([p for p in positions if len(getattr(hand, p)) < (3 if p == 'top' else 5)])
+    return {'cards': [card], 'positions': [(chosen_pos, card)]}
+
+
+# if __name__ == '__main__':
+#     game = OpenFaceChinesePoker()
+#     game.simulate_game(random_bot_agent, random_bot_agent)
