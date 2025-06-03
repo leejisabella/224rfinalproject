@@ -12,6 +12,8 @@ def evaluate_hand(cards):
     rank_values = {r: i for i, r in enumerate(ranks, 2)}
 
     def hand_rank(cards):
+        # print("cards")
+        # print(cards)
         counts = Counter(card.rank for card in cards)
         suits = [card.suit for card in cards]
         rank_counts = sorted(counts.values(), reverse=True)
@@ -172,6 +174,19 @@ class OpenFaceChinesePoker:
         return self.deck.draw(1), self.deck.draw(1)
 
     def game_over(self):
+
+        # print("Checking if game is over")
+
+        # print("Player Hand")
+        # print(self.player_hand.top)
+        # print(self.player_hand.middle)
+        # print(self.player_hand.bottom)
+
+        # print("Bot Hand")
+        # print(self.bot_hand.top)
+        # print(self.bot_hand.middle)            
+        # print(self.bot_hand.bottom)
+
         return self.player_hand.is_complete() and self.bot_hand.is_complete()
     
     def calculate_scores(self):
@@ -190,9 +205,11 @@ class OpenFaceChinesePoker:
             player_points -= 6
             bot_points += 6
 
+        # Get hand values
         player_hand_values = self.player_hand.count_points() if not fouls[0] else ((0,[0]),)*3
         bot_hand_values = self.bot_hand.count_points() if not fouls[1] else ((0,[0]),)*3
 
+        # Royalties if not fouled
         if not fouls[0]: 
             player_points += calculate_royalties(self.player_hand.top, "top")
             player_points += calculate_royalties(self.player_hand.middle, "middle")
@@ -205,6 +222,7 @@ class OpenFaceChinesePoker:
         player_hands_won = 0
         bot_hands_won = 0
 
+        # Calculate points from hand values
         for i in range(3):
             winner = compare_hands(player_hand_values[i], bot_hand_values[i])
             if winner == 1:
@@ -214,6 +232,7 @@ class OpenFaceChinesePoker:
                 bot_points += 1
                 bot_hands_won += 1
 
+        # Calculate winning multipliers
         if player_hands_won == 3:
             player_points += 3
         if bot_hands_won == 3:
@@ -305,17 +324,21 @@ class OpenFaceChinesePoker:
 
 
 # Simple agent example for bot decisions
-def random_bot_agent(hand, card, opponent_hand):
-    positions = ['top', 'middle', 'bottom']
-    available_positions = [
-        p for p in positions if len(getattr(hand, p)) < (3 if p == 'top' else 5)
-    ]
+def random_bot_agent(hand, cards, opponent_hand):
+    all_pos = []
+    for card in cards:
+        positions = ['top', 'middle', 'bottom']
+        available_positions = [
+            p for p in positions if len(getattr(hand, p)) < (3 if p == 'top' else 5)
+        ]
 
-    if not available_positions:
-        return {'cards': [], 'positions': []}  # Return empty move if no spots left
+        if not available_positions:
+            return {'cards': [], 'positions': []}  # Return empty move if no spots left
 
-    chosen_pos = random.choice(available_positions)
-    return {'cards': [card], 'positions': [(chosen_pos, card)]}
+        chosen_pos = random.choice(available_positions)
+        all_pos.append((chosen_pos, card))
+
+    return {'cards': cards, 'positions': all_pos}
 
 # if __name__ == '__main__':
 #     game = OpenFaceChinesePoker()

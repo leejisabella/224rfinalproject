@@ -24,7 +24,7 @@ class Node:
     def is_fully_expanded(self):
         return len(self.untried_actions) == 0
 
-    def best_child(self, c_param=0.3):
+    def best_child(self, c_param=1.4):
         if not self.children:
             return None
         choices_weights = [
@@ -38,7 +38,7 @@ class Node:
         action = random.choice(self.untried_actions)
         self.untried_actions.remove(action)
         next_state = deepcopy(self.state)
-        bot_card = next_state.deck.draw(1)[0]
+        bot_card = next_state.deck.draw(1)
 
         next_state.play_round(
             {'cards': [card], 'positions': [(action, card)]},
@@ -57,8 +57,9 @@ class Node:
 
 
 class MCTSAgent:
-    def __init__(self, num_simulations=100):
+    def __init__(self, num_simulations=100, c_param=1.4):
         self.num_simulations = num_simulations
+        self.c_param = c_param
 
     def search(self, initial_state, card):
         root = Node(deepcopy(initial_state))
@@ -79,11 +80,15 @@ class MCTSAgent:
 
             # Selection
             while not node.is_fully_expanded() and node.children:
-                node = node.best_child()
+                node = node.best_child(self.c_param)
 
             # Expansion
             if node.untried_actions:
                 node = node.expand(card)
+
+            # print(f"Node visits: {str(node.visits)}")
+            # print(f"Node value: {str(node.value)}")
+            # print(f"Node children: {str(node.children)}")
 
             # Simulation (Rollout)
             result = self.rollout(deepcopy(node.state))
@@ -115,19 +120,19 @@ class MCTSAgent:
                         sim_state = deepcopy(state)
                         sim_state.play_round(
                             {'cards': [player_card[0]], 'positions': [(pos, player_card[0])]},
-                            random_bot_agent(sim_state.bot_hand, bot_card[0], sim_state.player_hand)
+                            random_bot_agent(sim_state.bot_hand, bot_card, sim_state.player_hand)
                         )
                         score, _ = sim_state.calculate_scores()
                         if score > best_score:
                             best_score = score
                             best_move = {'cards': [player_card[0]], 'positions': [(pos, player_card[0])]}
 
-                player_move = best_move if best_move else random_bot_agent(state.player_hand, player_card[0], state.bot_hand)
+                player_move = best_move if best_move else random_bot_agent(state.player_hand, player_card, state.bot_hand)
                 first_move = False
             else:
-                player_move = random_bot_agent(state.player_hand, player_card[0], state.bot_hand)
+                player_move = random_bot_agent(state.player_hand, player_card, state.bot_hand)
 
-            bot_move = random_bot_agent(state.bot_hand, bot_card[0], state.player_hand)
+            bot_move = random_bot_agent(state.bot_hand, bot_card, state.player_hand)
 
             if player_move['positions'] and bot_move['positions']:
                 state.play_round(player_move, bot_move)

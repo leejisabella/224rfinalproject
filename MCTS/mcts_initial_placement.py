@@ -33,12 +33,12 @@ def get_all_initial_placements(cards):
     return initial_moves
 
 
-def evaluate_initial_placement(existing_game_state, initial_move, num_simulations=50):
+def evaluate_initial_placement(existing_game_state, initial_move, bot_cards, num_simulations=50):
     # Create a deep copy to avoid mutating original state
     game = deepcopy(existing_game_state)
 
     # Apply the initial placement under consideration
-    bot_initial_move = random_bot_agent(game.bot_hand, game.deck.draw()[0], game.player_hand)
+    bot_initial_move = random_bot_agent(game.bot_hand, bot_cards, game.player_hand)
     game.play_round(initial_move, bot_initial_move)
 
     mcts_agent = MCTSAgent(num_simulations=num_simulations)
@@ -58,7 +58,7 @@ def evaluate_initial_placement(existing_game_state, initial_move, num_simulation
                 break
             move = {'cards': [player_card[0]], 'positions': [(chosen_pos, player_card[0])]}
 
-            bot_move = random_bot_agent(sim_game.bot_hand, bot_card[0], sim_game.player_hand)
+            bot_move = random_bot_agent(sim_game.bot_hand, bot_card, sim_game.player_hand)
             sim_game.play_round(move, bot_move)
 
         player_points, bot_points = sim_game.calculate_scores()
@@ -68,13 +68,13 @@ def evaluate_initial_placement(existing_game_state, initial_move, num_simulation
     return avg_result
 
 
-def find_best_initial_placement(existing_game_state, cards):
+def find_best_initial_placement(existing_game_state, cards, bot_cards):
     initial_placements = get_all_initial_placements(cards)
     best_move = None
     best_score = float('-inf')
 
     for move in tqdm(initial_placements):
-        score = evaluate_initial_placement(existing_game_state, move)
+        score = evaluate_initial_placement(existing_game_state, move, bot_cards)
         # print(f"Placement {move['positions']} evaluated with avg. score: {score}")
         if score > best_score:
             best_score = score
