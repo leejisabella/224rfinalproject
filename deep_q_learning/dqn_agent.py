@@ -1,67 +1,112 @@
+import random
 import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
 from collections import deque
-from keras.models import Sequential # type: ignore
-from keras.layers import Dense, BatchNormalization, Input # type: ignore
-from keras.optimizers import Adam # type: ignore
+class QNetwork(nn.Module):
+    def __init__(self, input_dim, output_dim):
+        super(QNetwork, self).__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, output_dim)
+        )
+
+    def forward(self, x):
+        return self.net(x)
 
 class DQNAgent:
-    def __init__(self, state_size, action_size):
-        self.state_size = state_size  # 27 card positions + current card
-        self.action_size = action_size  # 3 (front/mid/back)
-        self.memory = deque(maxlen=2000)
-        self.gamma = 0.95  # Discount factor
-        self.epsilon = 1.0  # Exploration rate
-        self.epsilon_min = 0.05
-        self.epsilon_decay = 0.995
-        self.learning_rate = 0.001
-        self.model = self._build_model()
-        self.target_model = self._build_model()
-        
-    def _build_model(self):
-        model = Sequential()
-        model.add(Dense(256, input_dim=self.state_size, activation='relu'))
-        model.add(BatchNormalization())
-        model.add(Dense(256, activation='relu'))
-        model.add(BatchNormalization())
-        model.add(Dense(256, activation='relu'))
-        model.add(BatchNormalization())
-        model.add(Dense(self.action_size, activation='linear'))
-        model.compile(loss='mse', optimizer=Adam(learning_rate=self.learning_rate))
-        return model
+    def __init__(self, state_dim, action_dim=3, lr=1e-3, gamma=0.99, epsilon=1.0, epsilon_decay=0.995, epsilon_min=0.05):
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+        self.gamma = gamma
+        self.epsilon = epsilon
+        self.epsilon_decay = epsilon_decay
+        self.epsilon_min = epsilon_min
 
-    def remember(self, state, action, reward, next_state, done):
-        self.memory.append((state, action, reward, next_state, done))
+        self.q_net = QNetwork(state_dim, action_dim)
+        self.target_net = QNetwork(state_dim, action_dim)
+        self.optimizer = optim.Adam(self.q_net.parameters(), lr=lr)
+        self.loss_fn = nn.MSELoss()
+
+        self.replay_buffer = deque(maxlen=10000)
+        self.batch_size = 64
+        self.update_target_steps = 100
+        self.step_counter = 0
 
     def act(self, state):
-        if np.random.rand() <= self.epsilon:
-            return np.random.choice(self.action_size)
-        act_values = self.model.predict(state)
-        return np.argmax(act_values[0])
+        if random.random() < self.epsilon:
+            return random.randint(0, self.action_dim - 1)
+        with torch.no_grad():
+            state_tensor = torch.FloatTensor(state).unsqueeze(0)
+            q_values = self.q_net(state_tensor)
+            return torch.argmax(q_values).item()
 
-    def replay(self, batch_size, m_simulations=10):
-        minibatch = np.random.choice(len(self.memory), batch_size, replace=False)
-        states, targets = [], []
-        
-        for idx in minibatch:
-            state, action, reward, next_state, done = self.memory[idx]
-            target = self.model.predict(state)
-            
-            if done:
-                target[0][action] = reward
-            else:
-                q_futures = []
-                for _ in range(m_simulations):
-                    t = self.target_model.predict(next_state)[0]
-                    q_futures.append(np.max(t))
-                target[0][action] = reward + self.gamma * np.mean(q_futures)
-            
-            states.append(state[0])
-            targets.append(target[0])
-        
-        self.model.fit(np.array(states), np.array(targets), epochs=1, verbose=0)
-        
+    def remember(self, state, action, reward, next_state, done):
+        self.replay_buffer.append((state, action, reward, next_state, done))
+
+    def replay(self):
+        if len(self.replay_buffer) < self.batch_size:
+            return
+
+        batch = random.sample(self.replay_buffer, self.batch_size)
+        states, actions, rewards, next_states, dones = zip(*batch)
+
+        states = torch.FloatTensor(states)
+        next_states = torch.FloatTensor(next_states)
+        actions = torch.LongTensor(actions).unsqueeze(1)
+        rewards = torch.FloatTensor(rewards).unsqueeze(1)
+        dones = torch.BoolTensor(dones).unsqueeze(1)
+
+        q_values = self.q_net(states).gather(1, actions)
+        next_q_values = self.target_net(next_states).max(1, keepdim=True)[0]
+        target_q_values = rewards + (1 - dones.float()) * self.gamma * next_q_values
+
+        loss = self.loss_fn(q_values, target_q_values.detach())
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+
+        self.step_counter += 1
+        if self.step_counter % self.update_target_steps == 0:
+            self.target_net.load_state_dict(self.q_net.state_dict())
+
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
-    def update_target_model(self):
-        self.target_model.set_weights(self.model.get_weights())
+def extract_state_features(player_hand, current_card):
+    rank_to_index = {
+        '2': 0, '3': 1, '4': 2, '5': 3, '6': 4,
+        '7': 5, '8': 6, '9': 7, 'T': 8,
+        'J': 9, 'Q': 10, 'K': 11, 'A': 12
+    }
+    suit_to_index = {
+        'C': 0, 'D': 1, 'H': 2, 'S': 3
+    }
+    
+    def encode_card(card):
+        vec = np.zeros(52)
+        if card is not None:
+            rank_idx = rank_to_index.get(card.rank)
+            suit_idx = suit_to_index.get(card.suit)
+            if rank_idx is None or suit_idx is None:
+                raise ValueError(f"Unexpected card: rank={card.rank}, suit={card.suit}")
+            index = suit_idx * 13 + rank_idx
+            vec[index] = 1
+        return vec
+
+    state_vec = []
+    for zone in ['top', 'middle', 'bottom']:
+        cards = getattr(player_hand, zone)
+        for card in cards:
+            state_vec.extend(encode_card(card))
+        max_len = 3 if zone == 'top' else 5
+        for _ in range(max_len - len(cards)):
+            state_vec.extend([0] * 52)
+    
+    state_vec.extend(encode_card(current_card))
+
+    return np.array(state_vec, dtype=np.float32)

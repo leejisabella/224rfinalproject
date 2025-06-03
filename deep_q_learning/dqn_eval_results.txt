@@ -1,0 +1,58 @@
+Game 1 | DQN: 12, Bot: 6
+Game 2 | DQN: -6, Bot: 12
+Game 3 | DQN: 12, Bot: 6
+Game 4 | DQN: 12, Bot: -6
+Game 5 | DQN: -6, Bot: 12
+Game 6 | DQN: 7, Bot: 8
+Game 7 | DQN: 0, Bot: 0
+Game 8 | DQN: 0, Bot: 0
+Game 9 | DQN: -6, Bot: 12
+Game 10 | DQN: 12, Bot: -6
+Game 11 | DQN: 12, Bot: -6
+Game 12 | DQN: 12, Bot: -6
+Game 13 | DQN: 12, Bot: -6
+Game 14 | DQN: -6, Bot: 12
+Game 15 | DQN: 0, Bot: 0
+Game 16 | DQN: 0, Bot: 0
+Game 17 | DQN: 0, Bot: 0
+Game 18 | DQN: 0, Bot: 0
+Game 19 | DQN: 12, Bot: -6
+Game 20 | DQN: 12, Bot: -6
+Game 21 | DQN: 0, Bot: 0
+Game 22 | DQN: 0, Bot: 0
+Game 23 | DQN: -6, Bot: 12
+Game 24 | DQN: 0, Bot: 0
+Game 25 | DQN: 12, Bot: -6
+Game 26 | DQN: 0, Bot: 0
+Game 27 | DQN: -6, Bot: 12
+Game 28 | DQN: -6, Bot: 12
+Game 29 | DQN: 0, Bot: 0
+Game 30 | DQN: 12, Bot: -6
+Game 31 | DQN: 0, Bot: 0
+Game 32 | DQN: -6, Bot: 12
+Game 33 | DQN: 0, Bot: 0
+Game 34 | DQN: 0, Bot: 0
+Game 35 | DQN: 0, Bot: 0
+Game 36 | DQN: 0, Bot: 0
+Game 37 | DQN: 14, Bot: 6
+Game 38 | DQN: 0, Bot: 0
+Game 39 | DQN: -6, Bot: 12
+Game 40 | DQN: 0, Bot: 0
+Game 41 | DQN: 0, Bot: 0
+Game 42 | DQN: 0, Bot: 0
+Game 43 | DQN: -6, Bot: 12
+Game 44 | DQN: 12, Bot: -6
+Game 45 | DQN: 12, Bot: -6
+Game 46 | DQN: 12, Bot: -6
+Game 47 | DQN: 0, Bot: 0
+Game 48 | DQN: 0, Bot: 0
+Game 49 | DQN: 0, Bot: 0
+Game 50 | DQN: -6, Bot: 14
+
+--- DQN Evaluation Summary ---
+Total DQN Points: 123
+Total Bot Points: 88
+Average DQN Points: 2.46
+Average Bot Points: 1.76
+DQN Wins: 15/50 (30.0%)
+Bot Wins: 12/50 (24.0%)

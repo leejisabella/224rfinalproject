@@ -75,10 +75,8 @@ def find_best_initial_placement(existing_game_state, cards):
 
     for move in tqdm(initial_placements):
         score = evaluate_initial_placement(existing_game_state, move)
-        # print(f"Placement {move['positions']} evaluated with avg. score: {score}")
         if score > best_score:
             best_score = score
             best_move = move
 
-    # print("Best initial placement:", best_move)
     return best_move
