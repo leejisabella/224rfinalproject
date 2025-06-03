@@ -4,3 +4,4 @@ tensorflow
 tensorboard
 matplotlib
 treys
+tqdm
