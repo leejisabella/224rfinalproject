@@ -88,6 +88,33 @@ def compare_hands(hand_1, hand_2):
     else:
         return 0
 
+# Helper function to calculate royalties
+def calculate_royalties(hand, position):
+    ranks = '23456789TJQKA'
+    rank_values = {r: i for i, r in enumerate(ranks, 2)}
+
+    top_royalties = {'66': 1, '77': 2, '88': 3, '99': 4, 'TT': 5, 'JJ': 6, 'QQ': 7, 'KK': 8, 'AA': 9,
+                     '222': 10, '333': 11, '444': 12, '555': 13, '666': 14, '777': 15, '888': 16,
+                     '999': 17, 'TTT': 18, 'JJJ': 19, 'QQQ': 20, 'KKK': 21, 'AAA': 22}
+
+    middle_bottom_royalties = {
+        'middle': {'Three of a kind': 2, 'Straight': 4, 'Flush': 8, 'Full house': 12,
+                   'Four of a kind': 20, 'Straight flush': 30, 'Royal flush': 50},
+        'bottom': {'Three of a kind': 0, 'Straight': 2, 'Flush': 4, 'Full house': 6,
+                   'Four of a kind': 10, 'Straight flush': 15, 'Royal flush': 25}
+    }
+
+    strength = evaluate_hand(hand)
+
+    if position == 'top':
+        hand_ranks = ''.join(sorted([card.rank for card in hand], key=lambda x: rank_values[x]))
+        return top_royalties.get(hand_ranks, 0)
+    else:
+        hands_map = {8: 'Straight flush', 7: 'Four of a kind', 6: 'Full house',
+                     5: 'Flush', 4: 'Straight', 3: 'Three of a kind'}
+        return middle_bottom_royalties[position].get(hands_map.get(strength[0]), 0)
+
+
 class Deck:
     ranks = '23456789TJQKA'
     suits = 'CDHS'
@@ -198,8 +225,14 @@ class OpenFaceChinesePoker:
         bot_hand_values = ((0, [0]), (0, [0]), (0, [0]))
         if not fouls[0]: 
             player_hand_values = self.player_hand.count_points()
+            player_points += calculate_royalties(self.player_hand.top, "top")
+            player_points += calculate_royalties(self.player_hand.middle, "middle")
+            player_points += calculate_royalties(self.player_hand.bottom, "bottom")
         if not fouls[1]:
             bot_hand_values = self.bot_hand.count_points()
+            bot_hand_values += calculate_royalties(self.bot_hand.top, "top")
+            bot_hand_values += calculate_royalties(self.bot_hand.middle, "middle")
+            bot_hand_values += calculate_royalties(self.bot_hand.bottom, "bottom")
         player_hands_won = 0
         tied_hands = 0
 
