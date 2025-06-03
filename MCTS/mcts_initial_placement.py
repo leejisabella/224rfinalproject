@@ -4,6 +4,7 @@ from ofcp_player import OpenFaceChinesePoker, random_bot_agent
 from mcts import MCTSAgent  # Assuming your MCTS implementation from above.
 from tqdm import tqdm
 
+
 def get_all_initial_placements(cards):
     positions = ['top', 'middle', 'bottom']
     max_slots = {'top': 3, 'middle': 5, 'bottom': 5}
@@ -31,6 +32,7 @@ def get_all_initial_placements(cards):
 
     return initial_moves
 
+
 def evaluate_initial_placement(existing_game_state, initial_move, num_simulations=50):
     # Create a deep copy to avoid mutating original state
     game = deepcopy(existing_game_state)
@@ -50,21 +52,21 @@ def evaluate_initial_placement(existing_game_state, initial_move, num_simulation
         while not sim_game.game_over():
             player_card, bot_card = sim_game.deal_next_cards()
 
-            chosen_hand = mcts_agent.search(sim_game, player_card[0])
-            move = {'cards': [player_card[0]], 'positions': []}
-            for pos in ['top', 'middle', 'bottom']:
-                if getattr(chosen_hand, pos) != getattr(sim_game.player_hand, pos):
-                    move['positions'].append((pos, player_card[0]))
-                    break
+            chosen_pos = mcts_agent.search(sim_game, player_card[0])
+            if chosen_pos is None:
+                # No legal actions; break the simulation early
+                break
+            move = {'cards': [player_card[0]], 'positions': [(chosen_pos, player_card[0])]}
 
             bot_move = random_bot_agent(sim_game.bot_hand, bot_card[0], sim_game.player_hand)
             sim_game.play_round(move, bot_move)
 
         player_points, bot_points = sim_game.calculate_scores()
-        total_result += player_points - bot_points
+        total_result += player_points
 
     avg_result = total_result / simulations
     return avg_result
+
 
 def find_best_initial_placement(existing_game_state, cards):
     initial_placements = get_all_initial_placements(cards)

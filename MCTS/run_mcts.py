@@ -9,7 +9,6 @@ if __name__ == "__main__":
 
     total_p_points, total_b_points = 0, 0
     total_p_wins, total_b_wins = 0, 0
-    
 
     for run in tqdm(range(num_runs)):
         game = OpenFaceChinesePoker()
@@ -33,25 +32,21 @@ if __name__ == "__main__":
             # print(player_card)
             # print(bot_card)
 
-            chosen_hand = agent.search(game, player_card[0])
-
-            move = {'cards': [player_card[0]], 'positions': []}
-            for pos in ['top', 'middle', 'bottom']:
-                if getattr(chosen_hand, pos) != getattr(game.player_hand, pos):
-                    move['positions'].append((pos, player_card[0]))
-                    break
+            # Explicitly returns the chosen position (top, middle, or bottom)
+            chosen_pos = agent.search(game, player_card[0])
+            move = {'cards': [player_card[0]], 'positions': [(chosen_pos, player_card[0])]}
 
             bot_move = random_bot_agent(game.bot_hand, bot_card[0], game.player_hand)
             game.play_round(move, bot_move)
-            # print("Player Hand at end of round:")
-            # print(game.player_hand.top)
-            # print(game.player_hand.middle)
-            # print(game.player_hand.bottom)
-            # print("Bot Hand at end of round:")
-            # print(game.bot_hand.top)
-            # print(game.bot_hand.middle)
-            # print(game.bot_hand.bottom)
-            # print("")
+            print("Player Hand at end of round:")
+            print(game.player_hand.top)
+            print(game.player_hand.middle)
+            print(game.player_hand.bottom)
+            print("Bot Hand at end of round:")
+            print(game.bot_hand.top)
+            print(game.bot_hand.middle)
+            print(game.bot_hand.bottom)
+            print("")
 
         player_points, bot_points = game.calculate_scores()
         print("Final Scores:")
@@ -74,3 +69,4 @@ if __name__ == "__main__":
 
     print(f"Player Num Wins: {str(total_p_wins)}")
     print(f"Player Winrate: {str(total_p_wins / num_runs)}")
+    print(f"Bot Num Wins: {str(total_b_wins)}")
