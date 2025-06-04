@@ -1,0 +1,594 @@
+slurm submission log: 2025-06-03 16:20:32.174582
+created following sbatch script: 
+
+###############################
+
+#!/bin/bash
+
+#SBATCH --account=nlp
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=azguo-job-4180362
+#SBATCH --mem=50G
+#SBATCH --nodelist=sphinx5
+#SBATCH --open-mode=append
+#SBATCH --output=azguo-job-4180362.out
+#SBATCH --partition=sphinx
+#SBATCH --time=14-0
+
+# activate your desired anaconda environment
+
+
+# cd to working directory
+cd .
+
+# launch commands
+srun --unbuffered run_as_child_processes 'python3 ppo.py'
+
+###############################
+
+submission to slurm complete!
+
+
+###############################
+slurm submission output
+
+Submitted batch job 10398981
+
+
+
+###############################
+
+###############################
+start time: 2025-06-03 16:20:45.545941
+machine: sphinx5.stanford.edu
+conda env: 224r
+###############################
+running following processes
+
+	python3 ppo.py
+
+
+###############################
+command outputs: 
+
+
+[Episode 0] Final Player Score: -6, Total Reward: -6.00
+[Episode 50] Final Player Score: 0, Total Reward: 0.00
+[Episode 100] Final Player Score: 12, Total Reward: 12.00
+[Episode 150] Final Player Score: 0, Total Reward: 0.00
+[Episode 200] Final Player Score: 12, Total Reward: 12.00
+[Episode 250] Final Player Score: 0, Total Reward: 0.00
+[Episode 300] Final Player Score: -6, Total Reward: -6.00
+[Episode 350] Final Player Score: 0, Total Reward: 0.00
+[Episode 400] Final Player Score: 6, Total Reward: 6.00
+[Episode 450] Final Player Score: -6, Total Reward: -6.00
+[Episode 500] Final Player Score: 12, Total Reward: 12.00
+[Episode 550] Final Player Score: 12, Total Reward: 12.00
+[Episode 600] Final Player Score: 0, Total Reward: 0.00
+[Episode 650] Final Player Score: 12, Total Reward: 12.00
+[Episode 700] Final Player Score: 12, Total Reward: 12.00
+[Episode 750] Final Player Score: -6, Total Reward: -6.00
+[Episode 800] Final Player Score: -6, Total Reward: -6.00
+[Episode 850] Final Player Score: 12, Total Reward: 12.00
+[Episode 900] Final Player Score: -6, Total Reward: -6.00
+[Episode 950] Final Player Score: 0, Total Reward: 0.00
+[Episode 1000] Final Player Score: 0, Total Reward: 0.00
+[Episode 1050] Final Player Score: 8, Total Reward: 8.00
+[Episode 1100] Final Player Score: 0, Total Reward: 0.00
+[Episode 1150] Final Player Score: 12, Total Reward: 12.00
+[Episode 1200] Final Player Score: 0, Total Reward: 0.00
+[Episode 1250] Final Player Score: -6, Total Reward: -6.00
+[Episode 1300] Final Player Score: 0, Total Reward: 0.00
+[Episode 1350] Final Player Score: -6, Total Reward: -6.00
+[Episode 1400] Final Player Score: 0, Total Reward: 0.00
+[Episode 1450] Final Player Score: 0, Total Reward: 0.00
+Game 1: Player = 0, Bot = 0
+Game 2: Player = -6, Bot = 12
+Game 3: Player = 0, Bot = 0
+Game 4: Player = 0, Bot = 0
+Game 5: Player = 0, Bot = 0
+Game 6: Player = 0, Bot = 0
+Game 7: Player = 12, Bot = -6
+Game 8: Player = 12, Bot = -6
+Game 9: Player = -6, Bot = 12
+Game 10: Player = 0, Bot = 0
+Game 11: Player = -6, Bot = 12
+Game 12: Player = -6, Bot = 12
+Game 13: Player = 12, Bot = -6
+Game 14: Player = -6, Bot = 12
+Game 15: Player = -6, Bot = 12
+Game 16: Player = -6, Bot = 12
+Game 17: Player = 0, Bot = 0
+Game 18: Player = 0, Bot = 0
+Game 19: Player = 7, Bot = 8
+Game 20: Player = -6, Bot = 12
+Game 21: Player = 7, Bot = 8
+Game 22: Player = 0, Bot = 0
+Game 23: Player = 0, Bot = 0
+Game 24: Player = 18, Bot = -6
+Game 25: Player = -6, Bot = 12
+Game 26: Player = -6, Bot = 12
+Game 27: Player = 0, Bot = 0
+Game 28: Player = 12, Bot = -6
+Game 29: Player = 12, Bot = -6
+Game 30: Player = 0, Bot = 0
+Game 31: Player = 12, Bot = -6
+Game 32: Player = 0, Bot = 0
+Game 33: Player = 0, Bot = 0
+Game 34: Player = 0, Bot = 0
+Game 35: Player = -6, Bot = 12
+Game 36: Player = 0, Bot = 0
+Game 37: Player = -6, Bot = 12
+Game 38: Player = 12, Bot = -6
+Game 39: Player = 0, Bot = 0
+Game 40: Player = 0, Bot = 0
+Game 41: Player = 7, Bot = 8
+Game 42: Player = -6, Bot = 12
+Game 43: Player = 0, Bot = 0
+Game 44: Player = 7, Bot = 8
+Game 45: Player = 0, Bot = 0
+Game 46: Player = 0, Bot = 0
+Game 47: Player = 6, Bot = 12
+Game 48: Player = 0, Bot = 0
+Game 49: Player = 12, Bot = -6
+Game 50: Player = -6, Bot = 12
+Game 51: Player = 0, Bot = 0
+Game 52: Player = 0, Bot = 0
+Game 53: Player = 12, Bot = 6
+Game 54: Player = -6, Bot = 12
+Game 55: Player = -6, Bot = 12
+Game 56: Player = 6, Bot = 12
+Game 57: Player = 6, Bot = 12
+Game 58: Player = 0, Bot = 0
+Game 59: Player = 0, Bot = 0
+Game 60: Player = 0, Bot = 0
+Game 61: Player = -6, Bot = 12
+Game 62: Player = -6, Bot = 12
+Game 63: Player = -6, Bot = 12
+Game 64: Player = 0, Bot = 0
+Game 65: Player = 0, Bot = 0
+Game 66: Player = 0, Bot = 0
+Game 67: Player = 12, Bot = -6
+Game 68: Player = 0, Bot = 0
+Game 69: Player = 0, Bot = 0
+Game 70: Player = 12, Bot = -6
+Game 71: Player = -6, Bot = 12
+Game 72: Player = 0, Bot = 0
+Game 73: Player = 12, Bot = -6
+Game 74: Player = 12, Bot = -6
+Game 75: Player = -6, Bot = 12
+Game 76: Player = 12, Bot = -6
+Game 77: Player = -6, Bot = 12
+Game 78: Player = 0, Bot = 0
+Game 79: Player = -6, Bot = 12
+Game 80: Player = 12, Bot = -6
+Game 81: Player = 8, Bot = 7
+Game 82: Player = 0, Bot = 0
+Game 83: Player = -6, Bot = 12
+Game 84: Player = 0, Bot = 0
+Game 85: Player = 0, Bot = 0
+Game 86: Player = 12, Bot = -6
+Game 87: Player = 0, Bot = 0
+Game 88: Player = 0, Bot = 0
+Game 89: Player = 0, Bot = 0
+Game 90: Player = 0, Bot = 0
+Game 91: Player = 0, Bot = 0
+Game 92: Player = 0, Bot = 0
+Game 93: Player = 12, Bot = -6
+Game 94: Player = 14, Bot = -6
+Game 95: Player = 0, Bot = 0
+Game 96: Player = 0, Bot = 0
+Game 97: Player = 6, Bot = 18
+Game 98: Player = 0, Bot = 0
+Game 99: Player = 0, Bot = 0
+Game 100: Player = -6, Bot = 12
+Game 101: Player = 0, Bot = 0
+Game 102: Player = 0, Bot = 0
+Game 103: Player = 0, Bot = 0
+Game 104: Player = 0, Bot = 0
+Game 105: Player = 0, Bot = 0
+Game 106: Player = 0, Bot = 0
+Game 107: Player = 0, Bot = 0
+Game 108: Player = -6, Bot = 12
+Game 109: Player = 8, Bot = 7
+Game 110: Player = 6, Bot = 12
+Game 111: Player = 0, Bot = 0
+Game 112: Player = 7, Bot = 8
+Game 113: Player = 12, Bot = -6
+Game 114: Player = -6, Bot = 12
+Game 115: Player = -6, Bot = 12
+Game 116: Player = 0, Bot = 0
+Game 117: Player = 12, Bot = -6
+Game 118: Player = -6, Bot = 12
+Game 119: Player = -6, Bot = 12
+Game 120: Player = 0, Bot = 0
+Game 121: Player = 6, Bot = 12
+Game 122: Player = -6, Bot = 12
+Game 123: Player = 0, Bot = 0
+Game 124: Player = 0, Bot = 0
+Game 125: Player = 0, Bot = 0
+Game 126: Player = 12, Bot = -6
+Game 127: Player = 12, Bot = -6
+Game 128: Player = -6, Bot = 12
+Game 129: Player = 0, Bot = 0
+Game 130: Player = 0, Bot = 0
+Game 131: Player = 0, Bot = 0
+Game 132: Player = 0, Bot = 0
+Game 133: Player = 0, Bot = 0
+Game 134: Player = 12, Bot = 6
+Game 135: Player = 0, Bot = 0
+Game 136: Player = 0, Bot = 0
+Game 137: Player = 0, Bot = 0
+Game 138: Player = 0, Bot = 0
+Game 139: Player = 0, Bot = 0
+Game 140: Player = 6, Bot = 12
+Game 141: Player = 12, Bot = -6
+Game 142: Player = 12, Bot = -6
+Game 143: Player = 0, Bot = 0
+Game 144: Player = 12, Bot = -6
+Game 145: Player = 12, Bot = -6
+Game 146: Player = 0, Bot = 0
+Game 147: Player = 0, Bot = 0
+Game 148: Player = 0, Bot = 0
+Game 149: Player = 0, Bot = 0
+Game 150: Player = 8, Bot = 7
+Game 151: Player = -6, Bot = 12
+Game 152: Player = 0, Bot = 0
+Game 153: Player = -6, Bot = 12
+Game 154: Player = 0, Bot = 0
+Game 155: Player = 0, Bot = 0
+Game 156: Player = -6, Bot = 12
+Game 157: Player = 0, Bot = 0
+Game 158: Player = 12, Bot = -6
+Game 159: Player = -6, Bot = 12
+Game 160: Player = 12, Bot = -6
+Game 161: Player = -6, Bot = 12
+Game 162: Player = 0, Bot = 0
+Game 163: Player = 7, Bot = 8
+Game 164: Player = -6, Bot = 12
+Game 165: Player = -6, Bot = 12
+Game 166: Player = 0, Bot = 0
+Game 167: Player = 14, Bot = -6
+Game 168: Player = 0, Bot = 0
+Game 169: Player = 0, Bot = 0
+Game 170: Player = -6, Bot = 12
+Game 171: Player = 0, Bot = 0
+Game 172: Player = 0, Bot = 0
+Game 173: Player = 6, Bot = 12
+Game 174: Player = 14, Bot = -6
+Game 175: Player = 12, Bot = -6
+Game 176: Player = 12, Bot = -6
+Game 177: Player = 12, Bot = -6
+Game 178: Player = 12, Bot = -6
+Game 179: Player = 12, Bot = -6
+Game 180: Player = 12, Bot = -6
+Game 181: Player = 8, Bot = 7
+Game 182: Player = -6, Bot = 12
+Game 183: Player = 0, Bot = 0
+Game 184: Player = 0, Bot = 0
+Game 185: Player = -6, Bot = 12
+Game 186: Player = 0, Bot = 0
+Game 187: Player = -6, Bot = 12
+Game 188: Player = 0, Bot = 0
+Game 189: Player = 0, Bot = 0
+Game 190: Player = 0, Bot = 0
+Game 191: Player = 0, Bot = 0
+Game 192: Player = 0, Bot = 0
+Game 193: Player = -6, Bot = 12
+Game 194: Player = -6, Bot = 12
+Game 195: Player = 0, Bot = 0
+Game 196: Player = 0, Bot = 0
+Game 197: Player = 0, Bot = 0
+Game 198: Player = 14, Bot = -6
+Game 199: Player = 0, Bot = 0
+Game 200: Player = 0, Bot = 0
+Game 201: Player = -6, Bot = 12
+Game 202: Player = 12, Bot = -6
+Game 203: Player = -6, Bot = 12
+Game 204: Player = 0, Bot = 0
+Game 205: Player = 0, Bot = 0
+Game 206: Player = 12, Bot = 6
+Game 207: Player = 0, Bot = 0
+Game 208: Player = 6, Bot = 12
+Game 209: Player = 12, Bot = -6
+Game 210: Player = -6, Bot = 12
+Game 211: Player = 0, Bot = 0
+Game 212: Player = 0, Bot = 0
+Game 213: Player = 0, Bot = 0
+Game 214: Player = 0, Bot = 0
+Game 215: Player = 0, Bot = 0
+Game 216: Player = -6, Bot = 12
+Game 217: Player = 0, Bot = 0
+Game 218: Player = 6, Bot = 12
+Game 219: Player = 0, Bot = 0
+Game 220: Player = -6, Bot = 12
+Game 221: Player = -6, Bot = 12
+Game 222: Player = 0, Bot = 0
+Game 223: Player = -6, Bot = 12
+Game 224: Player = 0, Bot = 0
+Game 225: Player = -6, Bot = 12
+Game 226: Player = 8, Bot = 7
+Game 227: Player = 12, Bot = -6
+Game 228: Player = 12, Bot = -6
+Game 229: Player = 0, Bot = 0
+Game 230: Player = 0, Bot = 0
+Game 231: Player = 0, Bot = 0
+Game 232: Player = 0, Bot = 0
+Game 233: Player = 0, Bot = 0
+Game 234: Player = 0, Bot = 0
+Game 235: Player = 12, Bot = -6
+Game 236: Player = 0, Bot = 0
+Game 237: Player = 0, Bot = 0
+Game 238: Player = -6, Bot = 12
+Game 239: Player = 0, Bot = 0
+Game 240: Player = 12, Bot = 6
+Game 241: Player = -6, Bot = 12
+Game 242: Player = 0, Bot = 0
+Game 243: Player = 0, Bot = 0
+Game 244: Player = 0, Bot = 0
+Game 245: Player = 0, Bot = 0
+Game 246: Player = 0, Bot = 0
+Game 247: Player = 12, Bot = -6
+Game 248: Player = 0, Bot = 0
+Game 249: Player = 0, Bot = 0
+Game 250: Player = -6, Bot = 12
+Game 251: Player = 12, Bot = -6
+Game 252: Player = 12, Bot = -6
+Game 253: Player = -6, Bot = 12
+Game 254: Player = -6, Bot = 12
+Game 255: Player = 0, Bot = 0
+Game 256: Player = 12, Bot = -6
+Game 257: Player = 7, Bot = 8
+Game 258: Player = -6, Bot = 12
+Game 259: Player = 0, Bot = 0
+Game 260: Player = 0, Bot = 0
+Game 261: Player = 0, Bot = 0
+Game 262: Player = 12, Bot = -6
+Game 263: Player = 0, Bot = 0
+Game 264: Player = 12, Bot = -6
+Game 265: Player = -6, Bot = 12
+Game 266: Player = 0, Bot = 0
+Game 267: Player = 0, Bot = 0
+Game 268: Player = 0, Bot = 0
+Game 269: Player = -6, Bot = 12
+Game 270: Player = 12, Bot = -6
+Game 271: Player = 12, Bot = -6
+Game 272: Player = 8, Bot = 7
+Game 273: Player = -6, Bot = 12
+Game 274: Player = 0, Bot = 0
+Game 275: Player = 0, Bot = 0
+Game 276: Player = 0, Bot = 0
+Game 277: Player = -6, Bot = 12
+Game 278: Player = -6, Bot = 12
+Game 279: Player = 0, Bot = 0
+Game 280: Player = 0, Bot = 0
+Game 281: Player = -6, Bot = 12
+Game 282: Player = -6, Bot = 12
+Game 283: Player = 0, Bot = 0
+Game 284: Player = 0, Bot = 0
+Game 285: Player = 12, Bot = -6
+Game 286: Player = -6, Bot = 12
+Game 287: Player = 12, Bot = 6
+Game 288: Player = 0, Bot = 0
+Game 289: Player = 12, Bot = -6
+Game 290: Player = -6, Bot = 12
+Game 291: Player = 0, Bot = 0
+Game 292: Player = -6, Bot = 12
+Game 293: Player = 12, Bot = -6
+Game 294: Player = 0, Bot = 0
+Game 295: Player = -6, Bot = 12
+Game 296: Player = -6, Bot = 12
+Game 297: Player = 12, Bot = -6
+Game 298: Player = 12, Bot = -6
+Game 299: Player = 0, Bot = 0
+Game 300: Player = 12, Bot = -6
+Game 301: Player = 12, Bot = -6
+Game 302: Player = 0, Bot = 0
+Game 303: Player = 0, Bot = 0
+Game 304: Player = -6, Bot = 12
+Game 305: Player = 12, Bot = 6
+Game 306: Player = 0, Bot = 0
+Game 307: Player = -6, Bot = 12
+Game 308: Player = 7, Bot = 8
+Game 309: Player = 12, Bot = -6
+Game 310: Player = 0, Bot = 0
+Game 311: Player = 0, Bot = 0
+Game 312: Player = -6, Bot = 12
+Game 313: Player = 12, Bot = -6
+Game 314: Player = 12, Bot = -6
+Game 315: Player = 0, Bot = 0
+Game 316: Player = 12, Bot = -6
+Game 317: Player = -6, Bot = 12
+Game 318: Player = 12, Bot = -6
+Game 319: Player = 6, Bot = 12
+Game 320: Player = 12, Bot = 6
+Game 321: Player = 0, Bot = 0
+Game 322: Player = 0, Bot = 0
+Game 323: Player = -6, Bot = 16
+Game 324: Player = 0, Bot = 0
+Game 325: Player = -6, Bot = 12
+Game 326: Player = -6, Bot = 12
+Game 327: Player = 0, Bot = 0
+Game 328: Player = 12, Bot = -6
+Game 329: Player = 0, Bot = 0
+Game 330: Player = 12, Bot = -6
+Game 331: Player = 0, Bot = 0
+Game 332: Player = 6, Bot = 12
+Game 333: Player = 12, Bot = -6
+Game 334: Player = 12, Bot = -6
+Game 335: Player = 12, Bot = -6
+Game 336: Player = 0, Bot = 0
+Game 337: Player = -6, Bot = 12
+Game 338: Player = 6, Bot = 12
+Game 339: Player = 0, Bot = 0
+Game 340: Player = 12, Bot = -6
+Game 341: Player = 0, Bot = 0
+Game 342: Player = 0, Bot = 0
+Game 343: Player = -6, Bot = 12
+Game 344: Player = 12, Bot = -6
+Game 345: Player = -6, Bot = 12
+Game 346: Player = 0, Bot = 0
+Game 347: Player = 8, Bot = 7
+Game 348: Player = 0, Bot = 0
+Game 349: Player = 0, Bot = 0
+Game 350: Player = -6, Bot = 12
+Game 351: Player = 0, Bot = 0
+Game 352: Player = 0, Bot = 0
+Game 353: Player = 0, Bot = 0
+Game 354: Player = -6, Bot = 12
+Game 355: Player = 0, Bot = 0
+Game 356: Player = 0, Bot = 0
+Game 357: Player = -6, Bot = 12
+Game 358: Player = 12, Bot = 6
+Game 359: Player = 0, Bot = 0
+Game 360: Player = 0, Bot = 0
+Game 361: Player = 0, Bot = 0
+Game 362: Player = 0, Bot = 0
+Game 363: Player = -6, Bot = 12
+Game 364: Player = 6, Bot = 14
+Game 365: Player = 12, Bot = -6
+Game 366: Player = 0, Bot = 0
+Game 367: Player = 0, Bot = 0
+Game 368: Player = 0, Bot = 0
+Game 369: Player = 0, Bot = 0
+Game 370: Player = -6, Bot = 12
+Game 371: Player = 0, Bot = 0
+Game 372: Player = 7, Bot = 8
+Game 373: Player = 0, Bot = 0
+Game 374: Player = 0, Bot = 0
+Game 375: Player = -6, Bot = 12
+Game 376: Player = 0, Bot = 0
+Game 377: Player = 0, Bot = 0
+Game 378: Player = 0, Bot = 0
+Game 379: Player = 0, Bot = 0
+Game 380: Player = 7, Bot = 8
+Game 381: Player = 0, Bot = 0
+Game 382: Player = -6, Bot = 12
+Game 383: Player = -6, Bot = 12
+Game 384: Player = -6, Bot = 12
+Game 385: Player = -6, Bot = 12
+Game 386: Player = 0, Bot = 0
+Game 387: Player = 12, Bot = -6
+Game 388: Player = 12, Bot = -6
+Game 389: Player = 0, Bot = 0
+Game 390: Player = 0, Bot = 0
+Game 391: Player = 0, Bot = 0
+Game 392: Player = 0, Bot = 0
+Game 393: Player = 12, Bot = -6
+Game 394: Player = -6, Bot = 12
+Game 395: Player = 0, Bot = 0
+Game 396: Player = 12, Bot = -6
+Game 397: Player = 0, Bot = 0
+Game 398: Player = 0, Bot = 0
+Game 399: Player = 0, Bot = 0
+Game 400: Player = 0, Bot = 0
+Game 401: Player = 0, Bot = 0
+Game 402: Player = 0, Bot = 0
+Game 403: Player = 0, Bot = 0
+Game 404: Player = 0, Bot = 0
+Game 405: Player = -6, Bot = 12
+Game 406: Player = 12, Bot = -6
+Game 407: Player = 0, Bot = 0
+Game 408: Player = 0, Bot = 0
+Game 409: Player = -6, Bot = 12
+Game 410: Player = 7, Bot = 8
+Game 411: Player = 0, Bot = 0
+Game 412: Player = 0, Bot = 0
+Game 413: Player = 12, Bot = -6
+Game 414: Player = 0, Bot = 0
+Game 415: Player = -6, Bot = 12
+Game 416: Player = 7, Bot = 8
+Game 417: Player = -6, Bot = 12
+Game 418: Player = 12, Bot = -6
+Game 419: Player = 12, Bot = 6
+Game 420: Player = 0, Bot = 0
+Game 421: Player = 0, Bot = 0
+Game 422: Player = 0, Bot = 0
+Game 423: Player = -6, Bot = 12
+Game 424: Player = -6, Bot = 12
+Game 425: Player = 0, Bot = 0
+Game 426: Player = 12, Bot = -6
+Game 427: Player = 0, Bot = 0
+Game 428: Player = 0, Bot = 0
+Game 429: Player = 0, Bot = 0
+Game 430: Player = 12, Bot = -6
+Game 431: Player = 0, Bot = 0
+Game 432: Player = 0, Bot = 0
+Game 433: Player = 0, Bot = 0
+Game 434: Player = 0, Bot = 0
+Game 435: Player = -6, Bot = 12
+Game 436: Player = 7, Bot = 14
+Game 437: Player = 0, Bot = 0
+Game 438: Player = 0, Bot = 0
+Game 439: Player = 0, Bot = 0
+Game 440: Player = 12, Bot = -6
+Game 441: Player = -6, Bot = 12
+Game 442: Player = 0, Bot = 0
+Game 443: Player = 0, Bot = 0
+Game 444: Player = 7, Bot = 8
+Game 445: Player = -6, Bot = 12
+Game 446: Player = -6, Bot = 12
+Game 447: Player = 0, Bot = 0
+Game 448: Player = 0, Bot = 0
+Game 449: Player = 6, Bot = 16
+Game 450: Player = 0, Bot = 0
+Game 451: Player = 0, Bot = 0
+Game 452: Player = 0, Bot = 0
+Game 453: Player = -6, Bot = 12
+Game 454: Player = -6, Bot = 12
+Game 455: Player = 0, Bot = 0
+Game 456: Player = 12, Bot = -6
+Game 457: Player = 8, Bot = 7
+Game 458: Player = 0, Bot = 0
+Game 459: Player = 0, Bot = 0
+Game 460: Player = -6, Bot = 12
+Game 461: Player = -6, Bot = 12
+Game 462: Player = 12, Bot = -6
+Game 463: Player = 0, Bot = 0
+Game 464: Player = 0, Bot = 0
+Game 465: Player = 12, Bot = -6
+Game 466: Player = -6, Bot = 12
+Game 467: Player = 0, Bot = 0
+Game 468: Player = -6, Bot = 12
+Game 469: Player = 0, Bot = 0
+Game 470: Player = 12, Bot = -6
+Game 471: Player = -6, Bot = 12
+Game 472: Player = 0, Bot = 0
+Game 473: Player = 0, Bot = 0
+Game 474: Player = -6, Bot = 12
+Game 475: Player = 12, Bot = -6
+Game 476: Player = 0, Bot = 0
+Game 477: Player = 0, Bot = 0
+Game 478: Player = 0, Bot = 0
+Game 479: Player = -6, Bot = 12
+Game 480: Player = 0, Bot = 0
+Game 481: Player = 0, Bot = 0
+Game 482: Player = 0, Bot = 0
+Game 483: Player = 0, Bot = 0
+Game 484: Player = 0, Bot = 0
+Game 485: Player = 0, Bot = 0
+Game 486: Player = 0, Bot = 0
+Game 487: Player = 12, Bot = -6
+Game 488: Player = 7, Bot = 8
+Game 489: Player = 0, Bot = 0
+Game 490: Player = 0, Bot = 0
+Game 491: Player = 0, Bot = 0
+Game 492: Player = -6, Bot = 12
+Game 493: Player = 0, Bot = 0
+Game 494: Player = 0, Bot = 0
+Game 495: Player = 12, Bot = -6
+Game 496: Player = 0, Bot = 0
+Game 497: Player = -6, Bot = 12
+Game 498: Player = 0, Bot = 0
+Game 499: Player = 0, Bot = 0
+Game 500: Player = 12, Bot = -6
+
+==== Evaluation Summary ====
+Player Wins: 105
+Bot Wins: 143
+Average Player Score: 1.52
+Average Bot Score: 2.52
+###############################
+end time: 2025-06-03 16:21:15.582216
+elapsed time: 0:00:30.036275

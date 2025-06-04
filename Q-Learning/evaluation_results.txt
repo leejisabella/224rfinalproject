@@ -1,0 +1,11 @@
+
+--- QL 100 Evaluation Summary ---
+Total QL Points: 98
+Total Bot Points: 349
+Average QL Points: 0.98
+Average Bot Points: 3.49
+QL Wins: 22/100 (22.0%)
+Bot Wins: 35/100 (35.0%)
+
+Training Time: 33s
+Eval Time: 0s

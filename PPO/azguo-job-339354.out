@@ -1,0 +1,1060 @@
+slurm submission log: 2025-06-03 15:12:32.905564
+created following sbatch script: 
+
+###############################
+
+#!/bin/bash
+
+#SBATCH --account=nlp
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=azguo-job-339354
+#SBATCH --mem=50G
+#SBATCH --nodelist=sphinx5
+#SBATCH --open-mode=append
+#SBATCH --output=azguo-job-339354.out
+#SBATCH --partition=sphinx
+#SBATCH --time=14-0
+
+# activate your desired anaconda environment
+
+
+# cd to working directory
+cd .
+
+# launch commands
+srun --unbuffered run_as_child_processes 'python3 ppo.py'
+
+###############################
+
+submission to slurm complete!
+
+
+###############################
+slurm submission output
+
+Submitted batch job 10398572
+
+
+
+###############################
+
+###############################
+start time: 2025-06-03 15:12:35.678689
+machine: sphinx5.stanford.edu
+conda env: 224r
+###############################
+running following processes
+
+	python3 ppo.py
+
+
+###############################
+command outputs: 
+
+
+/juice2/u/azguo/224r/224rfinalproject/PPO/ppo.py:91: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  log_prob = dist.log_prob(torch.tensor(action))
+Episode 0 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 0, Reward: 0
+Episode 1 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 1, Reward: 6
+Episode 2 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 2, Reward: -6
+Episode 3 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 3, Reward: 12
+Episode 4 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 4, Reward: -6
+Episode 5 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 5, Reward: 0
+Episode 6 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 6, Reward: -6
+Episode 7 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 7, Reward: 0
+Episode 8 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 8, Reward: 0
+Episode 9 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 9, Reward: 0
+Episode 10 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 10, Reward: 0
+Episode 11 → Player Score: 14, Bot Score: -6, Reward Used: 14
+Episode 11, Reward: 14
+Episode 12 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 12, Reward: 0
+Episode 13 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 13, Reward: 0
+Episode 14 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 14, Reward: -6
+Episode 15 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 15, Reward: 0
+Episode 16 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 16, Reward: 0
+Episode 17 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 17, Reward: -6
+Episode 18 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 18, Reward: -6
+Episode 19 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 19, Reward: 0
+Episode 20 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 20, Reward: 8
+Episode 21 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 21, Reward: 0
+Episode 22 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 22, Reward: 0
+Episode 23 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 23, Reward: 0
+Episode 24 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 24, Reward: 8
+Episode 25 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 25, Reward: 0
+Episode 26 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 26, Reward: 0
+Episode 27 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 27, Reward: 7
+Episode 28 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 28, Reward: -6
+Episode 29 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 29, Reward: 0
+Episode 30 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 30, Reward: 0
+Episode 31 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 31, Reward: 0
+Episode 32 → Player Score: 18, Bot Score: -6, Reward Used: 18
+Episode 32, Reward: 18
+Episode 33 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 33, Reward: 6
+Episode 34 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 34, Reward: 0
+Episode 35 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 35, Reward: 12
+Episode 36 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 36, Reward: 0
+Episode 37 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 37, Reward: 0
+Episode 38 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 38, Reward: 0
+Episode 39 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 39, Reward: 0
+Episode 40 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 40, Reward: 12
+Episode 41 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 41, Reward: 12
+Episode 42 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 42, Reward: -6
+Episode 43 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 43, Reward: -6
+Episode 44 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 44, Reward: 6
+Episode 45 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 45, Reward: 7
+Episode 46 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 46, Reward: 0
+Episode 47 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 47, Reward: -6
+Episode 48 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 48, Reward: 0
+Episode 49 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 49, Reward: 0
+Episode 50 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 50, Reward: 7
+Episode 51 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 51, Reward: -6
+Episode 52 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 52, Reward: 0
+Episode 53 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 53, Reward: 12
+Episode 54 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 54, Reward: 0
+Episode 55 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 55, Reward: 0
+Episode 56 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 56, Reward: 0
+Episode 57 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 57, Reward: 0
+Episode 58 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 58, Reward: -6
+Episode 59 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 59, Reward: 0
+Episode 60 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 60, Reward: 12
+Episode 61 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 61, Reward: -6
+Episode 62 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 62, Reward: -6
+Episode 63 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 63, Reward: -6
+Episode 64 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 64, Reward: 0
+Episode 65 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 65, Reward: -6
+Episode 66 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 66, Reward: -6
+Episode 67 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 67, Reward: 12
+Episode 68 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 68, Reward: 12
+Episode 69 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 69, Reward: 12
+Episode 70 → Player Score: 18, Bot Score: -6, Reward Used: 18
+Episode 70, Reward: 18
+Episode 71 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 71, Reward: -6
+Episode 72 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 72, Reward: 7
+Episode 73 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 73, Reward: 0
+Episode 74 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 74, Reward: 0
+Episode 75 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 75, Reward: 12
+Episode 76 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 76, Reward: 12
+Episode 77 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 77, Reward: 6
+Episode 78 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 78, Reward: 0
+Episode 79 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 79, Reward: 12
+Episode 80 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 80, Reward: 0
+Episode 81 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 81, Reward: 7
+Episode 82 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 82, Reward: -6
+Episode 83 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 83, Reward: 12
+Episode 84 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 84, Reward: 0
+Episode 85 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 85, Reward: 12
+Episode 86 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 86, Reward: 0
+Episode 87 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 87, Reward: 12
+Episode 88 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 88, Reward: 12
+Episode 89 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 89, Reward: 12
+Episode 90 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 90, Reward: 0
+Episode 91 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 91, Reward: 12
+Episode 92 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 92, Reward: 0
+Episode 93 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 93, Reward: 0
+Episode 94 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 94, Reward: 7
+Episode 95 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 95, Reward: 12
+Episode 96 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 96, Reward: -6
+Episode 97 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 97, Reward: 0
+Episode 98 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 98, Reward: 0
+Episode 99 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 99, Reward: -6
+Episode 100 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 100, Reward: 0
+Episode 101 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 101, Reward: 0
+Episode 102 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 102, Reward: 0
+Episode 103 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 103, Reward: 8
+Episode 104 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 104, Reward: -6
+Episode 105 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 105, Reward: 0
+Episode 106 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 106, Reward: 0
+Episode 107 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 107, Reward: 0
+Episode 108 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 108, Reward: 0
+Episode 109 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 109, Reward: -6
+Episode 110 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 110, Reward: 12
+Episode 111 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 111, Reward: 0
+Episode 112 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 112, Reward: 0
+Episode 113 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 113, Reward: 0
+Episode 114 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 114, Reward: 12
+Episode 115 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 115, Reward: -6
+Episode 116 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 116, Reward: 12
+Episode 117 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 117, Reward: -6
+Episode 118 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 118, Reward: 0
+Episode 119 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 119, Reward: 12
+Episode 120 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 120, Reward: 12
+Episode 121 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 121, Reward: 0
+Episode 122 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 122, Reward: 0
+Episode 123 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 123, Reward: 7
+Episode 124 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 124, Reward: 0
+Episode 125 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 125, Reward: 12
+Episode 126 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 126, Reward: 12
+Episode 127 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 127, Reward: -6
+Episode 128 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 128, Reward: 0
+Episode 129 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 129, Reward: 12
+Episode 130 → Player Score: -6, Bot Score: 14, Reward Used: -6
+Episode 130, Reward: -6
+Episode 131 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 131, Reward: 12
+Episode 132 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 132, Reward: -6
+Episode 133 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 133, Reward: -6
+Episode 134 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 134, Reward: 12
+Episode 135 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 135, Reward: -6
+Episode 136 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 136, Reward: 0
+Episode 137 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 137, Reward: 12
+Episode 138 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 138, Reward: -6
+Episode 139 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 139, Reward: 12
+Episode 140 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 140, Reward: 12
+Episode 141 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 141, Reward: 0
+Episode 142 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 142, Reward: -6
+Episode 143 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 143, Reward: -6
+Episode 144 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 144, Reward: 6
+Episode 145 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 145, Reward: 0
+Episode 146 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 146, Reward: 0
+Episode 147 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 147, Reward: 0
+Episode 148 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 148, Reward: -6
+Episode 149 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 149, Reward: 12
+Episode 150 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 150, Reward: 12
+Episode 151 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 151, Reward: 6
+Episode 152 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 152, Reward: 12
+Episode 153 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 153, Reward: 12
+Episode 154 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 154, Reward: 12
+Episode 155 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 155, Reward: 0
+Episode 156 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 156, Reward: 0
+Episode 157 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 157, Reward: 12
+Episode 158 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 158, Reward: 12
+Episode 159 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 159, Reward: 12
+Episode 160 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 160, Reward: 0
+Episode 161 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 161, Reward: -6
+Episode 162 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 162, Reward: 0
+Episode 163 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 163, Reward: 0
+Episode 164 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 164, Reward: 0
+Episode 165 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 165, Reward: 0
+Episode 166 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 166, Reward: 12
+Episode 167 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 167, Reward: 0
+Episode 168 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 168, Reward: 12
+Episode 169 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 169, Reward: 0
+Episode 170 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 170, Reward: 6
+Episode 171 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 171, Reward: 0
+Episode 172 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 172, Reward: 12
+Episode 173 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 173, Reward: -6
+Episode 174 → Player Score: 14, Bot Score: -6, Reward Used: 14
+Episode 174, Reward: 14
+Episode 175 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 175, Reward: 12
+Episode 176 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 176, Reward: 0
+Episode 177 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 177, Reward: 12
+Episode 178 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 178, Reward: -6
+Episode 179 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 179, Reward: 12
+Episode 180 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 180, Reward: 12
+Episode 181 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 181, Reward: 0
+Episode 182 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 182, Reward: 0
+Episode 183 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 183, Reward: 12
+Episode 184 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 184, Reward: -6
+Episode 185 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 185, Reward: 0
+Episode 186 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 186, Reward: 12
+Episode 187 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 187, Reward: 0
+Episode 188 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 188, Reward: -6
+Episode 189 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 189, Reward: 12
+Episode 190 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 190, Reward: 0
+Episode 191 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 191, Reward: 0
+Episode 192 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 192, Reward: 12
+Episode 193 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 193, Reward: 12
+Episode 194 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 194, Reward: 0
+Episode 195 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 195, Reward: 12
+Episode 196 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 196, Reward: 0
+Episode 197 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 197, Reward: -6
+Episode 198 → Player Score: 14, Bot Score: -6, Reward Used: 14
+Episode 198, Reward: 14
+Episode 199 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 199, Reward: 0
+Episode 200 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 200, Reward: -6
+Episode 201 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 201, Reward: 8
+Episode 202 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 202, Reward: 12
+Episode 203 → Player Score: -6, Bot Score: 14, Reward Used: -6
+Episode 203, Reward: -6
+Episode 204 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 204, Reward: 0
+Episode 205 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 205, Reward: 12
+Episode 206 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 206, Reward: 12
+Episode 207 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 207, Reward: 8
+Episode 208 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 208, Reward: 0
+Episode 209 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 209, Reward: -6
+Episode 210 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 210, Reward: 0
+Episode 211 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 211, Reward: 12
+Episode 212 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 212, Reward: 12
+Episode 213 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 213, Reward: 12
+Episode 214 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 214, Reward: 0
+Episode 215 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 215, Reward: 8
+Episode 216 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 216, Reward: 12
+Episode 217 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 217, Reward: 0
+Episode 218 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 218, Reward: -6
+Episode 219 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 219, Reward: 0
+Episode 220 → Player Score: 14, Bot Score: -6, Reward Used: 14
+Episode 220, Reward: 14
+Episode 221 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 221, Reward: -6
+Episode 222 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 222, Reward: 12
+Episode 223 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 223, Reward: -6
+Episode 224 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 224, Reward: 0
+Episode 225 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 225, Reward: 0
+Episode 226 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 226, Reward: -6
+Episode 227 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 227, Reward: 12
+Episode 228 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 228, Reward: 12
+Episode 229 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 229, Reward: 12
+Episode 230 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 230, Reward: 0
+Episode 231 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 231, Reward: 0
+Episode 232 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 232, Reward: 12
+Episode 233 → Player Score: 12, Bot Score: 7, Reward Used: 12
+Episode 233, Reward: 12
+Episode 234 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 234, Reward: 12
+Episode 235 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 235, Reward: 12
+Episode 236 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 236, Reward: 0
+Episode 237 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 237, Reward: 12
+Episode 238 → Player Score: -6, Bot Score: 20, Reward Used: -6
+Episode 238, Reward: -6
+Episode 239 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 239, Reward: 12
+Episode 240 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 240, Reward: 12
+Episode 241 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 241, Reward: -6
+Episode 242 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 242, Reward: 0
+Episode 243 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 243, Reward: -6
+Episode 244 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 244, Reward: -6
+Episode 245 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 245, Reward: 0
+Episode 246 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 246, Reward: 12
+Episode 247 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 247, Reward: 0
+Episode 248 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 248, Reward: 12
+Episode 249 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 249, Reward: 8
+Episode 250 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 250, Reward: 12
+Episode 251 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 251, Reward: 0
+Episode 252 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 252, Reward: -6
+Episode 253 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 253, Reward: 12
+Episode 254 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 254, Reward: 12
+Episode 255 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 255, Reward: 0
+Episode 256 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 256, Reward: 6
+Episode 257 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 257, Reward: 0
+Episode 258 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 258, Reward: 6
+Episode 259 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 259, Reward: 12
+Episode 260 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 260, Reward: 12
+Episode 261 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 261, Reward: 12
+Episode 262 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 262, Reward: -6
+Episode 263 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 263, Reward: 0
+Episode 264 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 264, Reward: 12
+Episode 265 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 265, Reward: 0
+Episode 266 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 266, Reward: 12
+Episode 267 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 267, Reward: 12
+Episode 268 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 268, Reward: 0
+Episode 269 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 269, Reward: 12
+Episode 270 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 270, Reward: -6
+Episode 271 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 271, Reward: -6
+Episode 272 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 272, Reward: 0
+Episode 273 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 273, Reward: 12
+Episode 274 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 274, Reward: 12
+Episode 275 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 275, Reward: 0
+Episode 276 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 276, Reward: 0
+Episode 277 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 277, Reward: 12
+Episode 278 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 278, Reward: 0
+Episode 279 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 279, Reward: 12
+Episode 280 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 280, Reward: 12
+Episode 281 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 281, Reward: 8
+Episode 282 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 282, Reward: 0
+Episode 283 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 283, Reward: -6
+Episode 284 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 284, Reward: 12
+Episode 285 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 285, Reward: 8
+Episode 286 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 286, Reward: 0
+Episode 287 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 287, Reward: 0
+Episode 288 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 288, Reward: 7
+Episode 289 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 289, Reward: 12
+Episode 290 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 290, Reward: 0
+Episode 291 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 291, Reward: 12
+Episode 292 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 292, Reward: 0
+Episode 293 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 293, Reward: 0
+Episode 294 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 294, Reward: -6
+Episode 295 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 295, Reward: 0
+Episode 296 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 296, Reward: 0
+Episode 297 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 297, Reward: -6
+Episode 298 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 298, Reward: 12
+Episode 299 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 299, Reward: 12
+Episode 300 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 300, Reward: 0
+Episode 301 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 301, Reward: 0
+Episode 302 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 302, Reward: 0
+Episode 303 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 303, Reward: -6
+Episode 304 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 304, Reward: 0
+Episode 305 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 305, Reward: 12
+Episode 306 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 306, Reward: 12
+Episode 307 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 307, Reward: -6
+Episode 308 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 308, Reward: 7
+Episode 309 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 309, Reward: 0
+Episode 310 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 310, Reward: 12
+Episode 311 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 311, Reward: 0
+Episode 312 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 312, Reward: 0
+Episode 313 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 313, Reward: 0
+Episode 314 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 314, Reward: 0
+Episode 315 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 315, Reward: 0
+Episode 316 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 316, Reward: 0
+Episode 317 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 317, Reward: 0
+Episode 318 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 318, Reward: -6
+Episode 319 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 319, Reward: 0
+Episode 320 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 320, Reward: -6
+Episode 321 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 321, Reward: -6
+Episode 322 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 322, Reward: 8
+Episode 323 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 323, Reward: 0
+Episode 324 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 324, Reward: 0
+Episode 325 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 325, Reward: 0
+Episode 326 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 326, Reward: 0
+Episode 327 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 327, Reward: 12
+Episode 328 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 328, Reward: 12
+Episode 329 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 329, Reward: 0
+Episode 330 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 330, Reward: 12
+Episode 331 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 331, Reward: 12
+Episode 332 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 332, Reward: 12
+Episode 333 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 333, Reward: 12
+Episode 334 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 334, Reward: 12
+Episode 335 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 335, Reward: 12
+Episode 336 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 336, Reward: 0
+Episode 337 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 337, Reward: 0
+Episode 338 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 338, Reward: 12
+Episode 339 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 339, Reward: 0
+Episode 340 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 340, Reward: 0
+Episode 341 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 341, Reward: 12
+Episode 342 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 342, Reward: -6
+Episode 343 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 343, Reward: 0
+Episode 344 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 344, Reward: -6
+Episode 345 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 345, Reward: 0
+Episode 346 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 346, Reward: 0
+Episode 347 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 347, Reward: 0
+Episode 348 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 348, Reward: 0
+Episode 349 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 349, Reward: 0
+Episode 350 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 350, Reward: 12
+Episode 351 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 351, Reward: 7
+Episode 352 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 352, Reward: 0
+Episode 353 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 353, Reward: 0
+Episode 354 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 354, Reward: 12
+Episode 355 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 355, Reward: 12
+Episode 356 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 356, Reward: -6
+Episode 357 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 357, Reward: -6
+Episode 358 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 358, Reward: 0
+Episode 359 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 359, Reward: 12
+Episode 360 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 360, Reward: 12
+Episode 361 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 361, Reward: 0
+Episode 362 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 362, Reward: 0
+Episode 363 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 363, Reward: 12
+Episode 364 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 364, Reward: 12
+Episode 365 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 365, Reward: 0
+Episode 366 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 366, Reward: 0
+Episode 367 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 367, Reward: 0
+Episode 368 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 368, Reward: -6
+Episode 369 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 369, Reward: 12
+Episode 370 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 370, Reward: 0
+Episode 371 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 371, Reward: 0
+Episode 372 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 372, Reward: 12
+Episode 373 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 373, Reward: 12
+Episode 374 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 374, Reward: 0
+Episode 375 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 375, Reward: 0
+Episode 376 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 376, Reward: 0
+Episode 377 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 377, Reward: 0
+Episode 378 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 378, Reward: 0
+Episode 379 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 379, Reward: 12
+Episode 380 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 380, Reward: 0
+Episode 381 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 381, Reward: -6
+Episode 382 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 382, Reward: 12
+Episode 383 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 383, Reward: 0
+Episode 384 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 384, Reward: -6
+Episode 385 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 385, Reward: 12
+Episode 386 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 386, Reward: -6
+Episode 387 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 387, Reward: 12
+Episode 388 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 388, Reward: -6
+Episode 389 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 389, Reward: 6
+Episode 390 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 390, Reward: -6
+Episode 391 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 391, Reward: 0
+Episode 392 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 392, Reward: 12
+Episode 393 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 393, Reward: -6
+Episode 394 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 394, Reward: -6
+Episode 395 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 395, Reward: 12
+Episode 396 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 396, Reward: 6
+Episode 397 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 397, Reward: 12
+Episode 398 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 398, Reward: 12
+Episode 399 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 399, Reward: 12
+Episode 400 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 400, Reward: -6
+Episode 401 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 401, Reward: 0
+Episode 402 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 402, Reward: 12
+Episode 403 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 403, Reward: -6
+Episode 404 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 404, Reward: 12
+Episode 405 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 405, Reward: 8
+Episode 406 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 406, Reward: 6
+Episode 407 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 407, Reward: 12
+Episode 408 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 408, Reward: 8
+Episode 409 → Player Score: 14, Bot Score: -6, Reward Used: 14
+Episode 409, Reward: 14
+Episode 410 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 410, Reward: 12
+Episode 411 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 411, Reward: -6
+Episode 412 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 412, Reward: -6
+Episode 413 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 413, Reward: 0
+Episode 414 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 414, Reward: 0
+Episode 415 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 415, Reward: 0
+Episode 416 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 416, Reward: 0
+Episode 417 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 417, Reward: 12
+Episode 418 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 418, Reward: 0
+Episode 419 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 419, Reward: 12
+Episode 420 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 420, Reward: 12
+Episode 421 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 421, Reward: 12
+Episode 422 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 422, Reward: -6
+Episode 423 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 423, Reward: 7
+Episode 424 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 424, Reward: 12
+Episode 425 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 425, Reward: 0
+Episode 426 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 426, Reward: 0
+Episode 427 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 427, Reward: 0
+Episode 428 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 428, Reward: 0
+Episode 429 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 429, Reward: 12
+Episode 430 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 430, Reward: 0
+Episode 431 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 431, Reward: 12
+Episode 432 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 432, Reward: -6
+Episode 433 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 433, Reward: 0
+Episode 434 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 434, Reward: 12
+Episode 435 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 435, Reward: 0
+Episode 436 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 436, Reward: 0
+Episode 437 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 437, Reward: 0
+Episode 438 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 438, Reward: 12
+Episode 439 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 439, Reward: 12
+Episode 440 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 440, Reward: 12
+Episode 441 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 441, Reward: 12
+Episode 442 → Player Score: 16, Bot Score: -6, Reward Used: 16
+Episode 442, Reward: 16
+Episode 443 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 443, Reward: 0
+Episode 444 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 444, Reward: 12
+Episode 445 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 445, Reward: 0
+Episode 446 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 446, Reward: 0
+Episode 447 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 447, Reward: 0
+Episode 448 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 448, Reward: -6
+Episode 449 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 449, Reward: 12
+Episode 450 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 450, Reward: 0
+Episode 451 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 451, Reward: 12
+Episode 452 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 452, Reward: 0
+Episode 453 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 453, Reward: 7
+Episode 454 → Player Score: 7, Bot Score: 8, Reward Used: 7
+Episode 454, Reward: 7
+Episode 455 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 455, Reward: 8
+Episode 456 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 456, Reward: 8
+Episode 457 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 457, Reward: 0
+Episode 458 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 458, Reward: -6
+Episode 459 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 459, Reward: 0
+Episode 460 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 460, Reward: 0
+Episode 461 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 461, Reward: 8
+Episode 462 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 462, Reward: 0
+Episode 463 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 463, Reward: 0
+Episode 464 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 464, Reward: 12
+Episode 465 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 465, Reward: 0
+Episode 466 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 466, Reward: 0
+Episode 467 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 467, Reward: 0
+Episode 468 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 468, Reward: 0
+Episode 469 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 469, Reward: 0
+Episode 470 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 470, Reward: 0
+Episode 471 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 471, Reward: 0
+Episode 472 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 472, Reward: 12
+Episode 473 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 473, Reward: 0
+Episode 474 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 474, Reward: 12
+Episode 475 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 475, Reward: 6
+Episode 476 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 476, Reward: 0
+Episode 477 → Player Score: 6, Bot Score: 12, Reward Used: 6
+Episode 477, Reward: 6
+Episode 478 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 478, Reward: 0
+Episode 479 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 479, Reward: 8
+Episode 480 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 480, Reward: 0
+Episode 481 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 481, Reward: 0
+Episode 482 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 482, Reward: 0
+Episode 483 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 483, Reward: -6
+Episode 484 → Player Score: -6, Bot Score: 12, Reward Used: -6
+Episode 484, Reward: -6
+Episode 485 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 485, Reward: 0
+Episode 486 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 486, Reward: 12
+Episode 487 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 487, Reward: 0
+Episode 488 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 488, Reward: 0
+Episode 489 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 489, Reward: 0
+Episode 490 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 490, Reward: 0
+Episode 491 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 491, Reward: 8
+Episode 492 → Player Score: 12, Bot Score: 6, Reward Used: 12
+Episode 492, Reward: 12
+Episode 493 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 493, Reward: 12
+Episode 494 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 494, Reward: 12
+Episode 495 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 495, Reward: 12
+Episode 496 → Player Score: 12, Bot Score: -6, Reward Used: 12
+Episode 496, Reward: 12
+Episode 497 → Player Score: 8, Bot Score: 7, Reward Used: 8
+Episode 497, Reward: 8
+Episode 498 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 498, Reward: 0
+Episode 499 → Player Score: 0, Bot Score: 0, Reward Used: 0
+Episode 499, Reward: 0
+###############################
+end time: 2025-06-03 15:12:55.706604
+elapsed time: 0:00:20.027915

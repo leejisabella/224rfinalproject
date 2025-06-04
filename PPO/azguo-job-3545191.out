@@ -1,0 +1,72 @@
+slurm submission log: 2025-06-03 20:45:12.355987
+created following sbatch script: 
+
+###############################
+
+#!/bin/bash
+
+#SBATCH --account=nlp
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=azguo-job-3545191
+#SBATCH --mem=50G
+#SBATCH --nodelist=sphinx2
+#SBATCH --open-mode=append
+#SBATCH --output=azguo-job-3545191.out
+#SBATCH --partition=sphinx
+#SBATCH --time=14-0
+
+# activate your desired anaconda environment
+
+
+# cd to working directory
+cd .
+
+# launch commands
+srun --unbuffered run_as_child_processes 'python3 ppo.py'
+
+###############################
+
+submission to slurm complete!
+
+
+###############################
+slurm submission output
+
+Submitted batch job 10399262
+
+
+
+###############################
+
+###############################
+start time: 2025-06-03 20:45:22.311066
+machine: sphinx2
+conda env: 224r
+###############################
+running following processes
+
+	python3 ppo.py
+
+
+###############################
+command outputs: 
+
+
+/juice2/u/azguo/224r/224rfinalproject/PPO/ppo.py:124: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /pytorch/aten/src/ATen/native/ReduceOps.cpp:1839.)
+  advantage = (advantage - advantage.mean()) / (advantage.std() + 1e-8)
+[Episode 0] Final Player Score: 0, Total Reward: -6.00
+Traceback (most recent call last):
+  File "/juice2/u/azguo/224r/224rfinalproject/PPO/ppo.py", line 212, in <module>
+    trained_agent = ppo_train(num_episodes=2000)
+  File "/juice2/u/azguo/224r/224rfinalproject/PPO/ppo.py", line 84, in ppo_train
+    dist = torch.distributions.Categorical(masked_pi)
+  File "/nlp/scr/azguo/miniconda3/envs/224r/lib/python3.9/site-packages/torch/distributions/categorical.py", line 73, in __init__
+    super().__init__(batch_shape, validate_args=validate_args)
+  File "/nlp/scr/azguo/miniconda3/envs/224r/lib/python3.9/site-packages/torch/distributions/distribution.py", line 72, in __init__
+    raise ValueError(
+ValueError: Expected parameter probs (Tensor of shape (3,)) of distribution Categorical(probs: torch.Size([3])) to satisfy the constraint Simplex(), but found invalid values:
+tensor([nan, nan, nan], grad_fn=<DivBackward0>)
+###############################
+end time: 2025-06-03 20:45:32.328406
+elapsed time: 0:00:10.017340

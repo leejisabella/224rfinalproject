@@ -1,0 +1,84 @@
+slurm submission log: 2025-06-03 15:42:48.175897
+created following sbatch script: 
+
+###############################
+
+#!/bin/bash
+
+#SBATCH --account=nlp
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=azguo-job-3764627
+#SBATCH --mem=50G
+#SBATCH --nodelist=sphinx5
+#SBATCH --open-mode=append
+#SBATCH --output=azguo-job-3764627.out
+#SBATCH --partition=sphinx
+#SBATCH --time=14-0
+
+# activate your desired anaconda environment
+
+
+# cd to working directory
+cd .
+
+# launch commands
+srun --unbuffered run_as_child_processes 'python3 ppo.py'
+
+###############################
+
+submission to slurm complete!
+
+
+###############################
+slurm submission output
+
+Submitted batch job 10398638
+
+
+
+###############################
+
+###############################
+start time: 2025-06-03 15:42:51.191915
+machine: sphinx5.stanford.edu
+conda env: 224r
+###############################
+running following processes
+
+	python3 ppo.py
+
+
+###############################
+command outputs: 
+
+
+[Episode 0] Final Player Score: -6, Total Reward: -6.00
+[Episode 50] Final Player Score: 12, Total Reward: 12.00
+[Episode 100] Final Player Score: 0, Total Reward: 0.00
+[Episode 150] Final Player Score: 12, Total Reward: 12.00
+[Episode 200] Final Player Score: 0, Total Reward: 0.00
+[Episode 250] Final Player Score: -6, Total Reward: -6.00
+[Episode 300] Final Player Score: 0, Total Reward: 0.00
+[Episode 350] Final Player Score: 12, Total Reward: 12.00
+[Episode 400] Final Player Score: 0, Total Reward: 0.00
+[Episode 450] Final Player Score: 0, Total Reward: 0.00
+Game 1: Player = 12, Bot = -6
+Game 2: Player = 7, Bot = 8
+Game 3: Player = 12, Bot = -6
+Game 4: Player = 12, Bot = -6
+Game 5: Player = 7, Bot = 8
+Game 6: Player = 12, Bot = -6
+Game 7: Player = 0, Bot = 0
+Game 8: Player = -6, Bot = 12
+Game 9: Player = -6, Bot = 12
+Game 10: Player = -6, Bot = 12
+
+==== Evaluation Summary ====
+Player Wins: 4
+Bot Wins: 5
+Average Player Score: 4.40
+Average Bot Score: 2.80
+###############################
+end time: 2025-06-03 15:43:11.216121
+elapsed time: 0:00:20.024206

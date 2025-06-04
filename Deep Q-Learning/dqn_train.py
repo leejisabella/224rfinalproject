@@ -6,12 +6,13 @@ from tqdm import tqdm
 import torch
 import random
 
-if __name__ == "__main__":
-    episodes = 500
-    state_dim = 728
-    agent = DQNAgent(state_dim=state_dim)
+EPISODES = 2000
+STATE_DIM = 728
 
-    for ep in tqdm(range(episodes)):
+if __name__ == "__main__":
+    agent = DQNAgent(state_dim=STATE_DIM)
+
+    for ep in tqdm(range(EPISODES)):
         game = OpenFaceChinesePoker()
         player_initial, bot_initial = game.initial_deal()
 
