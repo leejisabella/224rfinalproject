@@ -1,0 +1,111 @@
+Game 1 | DQN: 0, Bot: 0
+Game 2 | DQN: 12, Bot: -6
+Game 3 | DQN: 0, Bot: 0
+Game 4 | DQN: -6, Bot: 12
+Game 5 | DQN: 0, Bot: 0
+Game 6 | DQN: -6, Bot: 12
+Game 7 | DQN: 12, Bot: 6
+Game 8 | DQN: 12, Bot: -6
+Game 9 | DQN: 12, Bot: -6
+Game 10 | DQN: 7, Bot: 8
+Game 11 | DQN: 0, Bot: 0
+Game 12 | DQN: 12, Bot: -6
+Game 13 | DQN: 12, Bot: -6
+Game 14 | DQN: -6, Bot: 12
+Game 15 | DQN: 0, Bot: 0
+Game 16 | DQN: -6, Bot: 12
+Game 17 | DQN: 0, Bot: 0
+Game 18 | DQN: -6, Bot: 12
+Game 19 | DQN: 6, Bot: 12
+Game 20 | DQN: -6, Bot: 12
+Game 21 | DQN: 12, Bot: -6
+Game 22 | DQN: 8, Bot: 7
+Game 23 | DQN: -6, Bot: 12
+Game 24 | DQN: 12, Bot: -6
+Game 25 | DQN: 0, Bot: 0
+Game 26 | DQN: -6, Bot: 12
+Game 27 | DQN: 12, Bot: -6
+Game 28 | DQN: 0, Bot: 0
+Game 29 | DQN: -6, Bot: 12
+Game 30 | DQN: -6, Bot: 12
+Game 31 | DQN: 12, Bot: -6
+Game 32 | DQN: -6, Bot: 12
+Game 33 | DQN: 8, Bot: 7
+Game 34 | DQN: 12, Bot: -6
+Game 35 | DQN: 0, Bot: 0
+Game 36 | DQN: 12, Bot: -6
+Game 37 | DQN: 0, Bot: 0
+Game 38 | DQN: 0, Bot: 0
+Game 39 | DQN: 12, Bot: -6
+Game 40 | DQN: 12, Bot: -6
+Game 41 | DQN: 0, Bot: 0
+Game 42 | DQN: 12, Bot: -6
+Game 43 | DQN: 0, Bot: 0
+Game 44 | DQN: -6, Bot: 12
+Game 45 | DQN: 0, Bot: 0
+Game 46 | DQN: 0, Bot: 0
+Game 47 | DQN: 0, Bot: 0
+Game 48 | DQN: 0, Bot: 0
+Game 49 | DQN: 7, Bot: 8
+Game 50 | DQN: 12, Bot: -6
+Game 51 | DQN: 12, Bot: -6
+Game 52 | DQN: 0, Bot: 0
+Game 53 | DQN: 0, Bot: 0
+Game 54 | DQN: 8, Bot: 7
+Game 55 | DQN: -6, Bot: 12
+Game 56 | DQN: -6, Bot: 12
+Game 57 | DQN: 12, Bot: -6
+Game 58 | DQN: 12, Bot: 6
+Game 59 | DQN: 0, Bot: 0
+Game 60 | DQN: 0, Bot: 0
+Game 61 | DQN: -6, Bot: 12
+Game 62 | DQN: -6, Bot: 12
+Game 63 | DQN: 0, Bot: 0
+Game 64 | DQN: -6, Bot: 12
+Game 65 | DQN: 8, Bot: 7
+Game 66 | DQN: 0, Bot: 0
+Game 67 | DQN: 12, Bot: -6
+Game 68 | DQN: 0, Bot: 0
+Game 69 | DQN: -6, Bot: 12
+Game 70 | DQN: 12, Bot: -6
+Game 71 | DQN: 0, Bot: 0
+Game 72 | DQN: 12, Bot: -6
+Game 73 | DQN: 6, Bot: 12
+Game 74 | DQN: -6, Bot: 12
+Game 75 | DQN: 12, Bot: -6
+Game 76 | DQN: 0, Bot: 0
+Game 77 | DQN: 12, Bot: -6
+Game 78 | DQN: -6, Bot: 12
+Game 79 | DQN: 0, Bot: 0
+Game 80 | DQN: -6, Bot: 12
+Game 81 | DQN: 12, Bot: -6
+Game 82 | DQN: 0, Bot: 0
+Game 83 | DQN: -6, Bot: 12
+Game 84 | DQN: -6, Bot: 12
+Game 85 | DQN: 0, Bot: 0
+Game 86 | DQN: -6, Bot: 12
+Game 87 | DQN: -6, Bot: 12
+Game 88 | DQN: 0, Bot: 0
+Game 89 | DQN: 12, Bot: -6
+Game 90 | DQN: 0, Bot: 0
+Game 91 | DQN: -6, Bot: 12
+Game 92 | DQN: 0, Bot: 0
+Game 93 | DQN: -6, Bot: 12
+Game 94 | DQN: 12, Bot: -6
+Game 95 | DQN: 0, Bot: 0
+Game 96 | DQN: 0, Bot: 0
+Game 97 | DQN: 0, Bot: 0
+Game 98 | DQN: -6, Bot: 12
+Game 99 | DQN: 0, Bot: 0
+Game 100 | DQN: -6, Bot: 12
+
+--- DQN Evaluation Summary ---
+Total DQN Points: 208
+Total Bot Points: 278
+Average DQN Points: 2.08
+Average Bot Points: 2.78
+DQN Wins: 31/100 (31.0%)
+Bot Wins: 33/100 (33.0%)
+
+Training Time: 5m 3s
+Eval Time: 4s
