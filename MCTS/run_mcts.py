@@ -49,7 +49,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--log_file", type=str)
     parser.add_argument("--cross_entropy", action='store_true')
-    parser.add_argument("--n_rums", type=int, default=10)
+    parser.add_argument("--n_runs", type=int, default=10)
     parser.add_argument("--chosen_c_param", type=int, default=0.3)
     args = parser.parse_args()
 
