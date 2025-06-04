@@ -24,12 +24,10 @@ class PPOAgent(nn.Module):
 
 # Richer state encoder: include pile strengths and card features
 def encode_state(hand, card):
-    # Get strength for each pile
     def pile_features(pile):
         if pile:
             strength = evaluate_hand(pile)
             cat = strength[0]
-            # tiebreaker: if list, take max, else itself
             val = max(strength[1]) if isinstance(strength[1], list) else strength[1]
         else:
             cat, val = 0, 0
@@ -41,14 +39,11 @@ def encode_state(hand, card):
     ranks = '23456789TJQKA'
     suits = 'CDHS'
     card_feat = [ranks.index(card.rank), suits.index(card.suit)]
-    features = top_feats + mid_feats + bot_feats + card_feat
-    return torch.tensor(features, dtype=torch.float32)
+    return torch.tensor(top_feats + mid_feats + bot_feats + card_feat, dtype=torch.float32)
 
-# PPO training with intermediate rewards and entropy bonus
-# input_dim = 8 (6 pile features + 2 card features), action_dim = 3
-
+# PPO training with score-difference rewards, entropy bonus, and foul penalties
 def ppo_train(num_episodes=500, lr=0.0005):
-    state_dim = 8
+    state_dim = 8    # 6 pile-strength features + 2 card features
     action_dim = 3
     agent = PPOAgent(state_dim, action_dim)
     optimizer = optim.Adam(agent.parameters(), lr=lr)
@@ -63,7 +58,8 @@ def ppo_train(num_episodes=500, lr=0.0005):
         bot_card = bot_cards.pop()
         done = False
 
-        prev_score, _ = env.calculate_scores()
+        prev_p, prev_b = env.calculate_scores()
+        prev_diff = prev_p - prev_b
 
         while not done:
             state = encode_state(env.player_hand, player_card)
@@ -74,12 +70,20 @@ def ppo_train(num_episodes=500, lr=0.0005):
             positions = ['top', 'middle', 'bottom']
             available_positions = [p for p in positions if len(getattr(env.player_hand, p)) < (3 if p == 'top' else 5)]
             if not available_positions:
+                # No legal move: small penalty and end
+                rewards.append(torch.tensor(-2.0))
+                log_probs.append(torch.tensor(0.0))
+                values.append(torch.tensor(0.0))
                 break
 
             pos_to_idx = {'top': 0, 'middle': 1, 'bottom': 2}
             available_indices = [pos_to_idx[p] for p in available_positions]
-            masked_pi = pi[available_indices]
-            masked_pi = masked_pi / masked_pi.sum()
+            masked_pi = pi[available_indices].clone()
+            if masked_pi.sum().item() == 0:
+                # If all probabilities zero, use uniform
+                masked_pi = torch.ones_like(masked_pi) / masked_pi.size(0)
+            else:
+                masked_pi = masked_pi / masked_pi.sum()
 
             dist = torch.distributions.Categorical(masked_pi)
             action = dist.sample()
@@ -91,31 +95,56 @@ def ppo_train(num_episodes=500, lr=0.0005):
             bot_move = random_bot_agent(env.bot_hand, bot_card, env.player_hand)
             env.play_round(player_move, bot_move)
 
-            new_score, _ = env.calculate_scores()
-            reward = new_score - prev_score
-            prev_score = new_score
+            # Immediate partial-hand foul check
+            if not env.player_hand.valid_hand() and not env.player_hand.is_complete():
+                rewards.append(torch.tensor(-6.0))
+                log_probs.append(log_prob)
+                values.append(value)
+                done = True
+                break
 
-            rewards.append(reward)
+            # If game complete, check final foul or score-difference
+            if env.game_over():
+                new_p, new_b = env.calculate_scores()
+                if not env.player_hand.valid_hand():
+                    rewards.append(torch.tensor(-6.0))
+                else:
+                    new_diff = new_p - new_b
+                    rewards.append(torch.tensor(new_diff - prev_diff))
+                    prev_diff = new_diff
+                break
+
+            # Normal step: rewards = Δ(score difference)
+            new_p, new_b = env.calculate_scores()
+            new_diff = new_p - new_b
+            rewards.append(torch.tensor(new_diff - prev_diff))
+            prev_diff = new_diff
             log_probs.append(log_prob)
             values.append(value)
 
-            if env.game_over():
-                break
-
+            # Next cards
             next_cards = env.deal_next_cards()
             if not next_cards or not next_cards[0] or not next_cards[1]:
                 break
-            player_card = next_cards[0][0]
-            bot_card = next_cards[1][0]
+            player_card, bot_card = next_cards[0][0], next_cards[1][0]
+
+        # Ensure there's at least one reward
+        if not rewards:
+            rewards = [torch.tensor(-2.0)]
+            log_probs = [torch.tensor(0.0)]
+            values = [torch.tensor(0.0)]
 
         # Compute PPO losses
         returns = torch.tensor(rewards, dtype=torch.float32)
-        values = torch.cat(values).squeeze()
-        log_probs = torch.stack(log_probs)
-        advantage = returns - values
-        advantage = (advantage - advantage.mean()) / (advantage.std() + 1e-8)
+        values_tensor = torch.cat(values).squeeze()
+        log_probs_tensor = torch.stack(log_probs)
+        advantage = returns - values_tensor
+        if advantage.size(0) > 1:
+            advantage = (advantage - advantage.mean()) / (advantage.std() + 1e-8)
+        else:
+            advantage = advantage * 0  # zero advantage if single step
 
-        policy_loss = -(log_probs * advantage.detach()).mean()
+        policy_loss = -(log_probs_tensor * advantage.detach()).mean()
         value_loss = advantage.pow(2).mean()
 
         # Recompute entropy from stored states
@@ -134,12 +163,11 @@ def ppo_train(num_episodes=500, lr=0.0005):
         optimizer.step()
 
         if episode % 50 == 0:
-            print(f"[Episode {episode}] Final Player Score: {prev_score}, Total Reward: {returns.sum():.2f}")
+            print(f"[Episode {episode}] Last Δ(total diff) = {prev_diff:.2f}, Sum(rewards) = {returns.sum():.2f}")
 
     return agent
 
-# Evaluation function remains unchanged
-
+# Evaluation remains unchanged
 def evaluate(agent, num_games=10):
     total_player_score = 0
     total_bot_score = 0
@@ -165,7 +193,10 @@ def evaluate(agent, num_games=10):
             pos_to_idx = {'top': 0, 'middle': 1, 'bottom': 2}
             available_indices = [pos_to_idx[p] for p in available_positions]
             masked_pi = pi[available_indices]
-            masked_pi = masked_pi / masked_pi.sum()
+            if masked_pi.sum().item() == 0:
+                masked_pi = torch.ones_like(masked_pi) / masked_pi.size(0)
+            else:
+                masked_pi = masked_pi / masked_pi.sum()
 
             dist = torch.distributions.Categorical(masked_pi)
             action = dist.sample()
@@ -184,15 +215,15 @@ def evaluate(agent, num_games=10):
             player_card = next_cards[0][0]
             bot_card = next_cards[1][0]
 
-        player_score, bot_score = env.calculate_scores()
-        total_player_score += player_score
-        total_bot_score += bot_score
-        if player_score > bot_score:
+        p_score, b_score = env.calculate_scores()
+        total_player_score += p_score
+        total_bot_score += b_score
+        if p_score > b_score:
             player_wins += 1
-        elif bot_score > player_score:
+        elif b_score > p_score:
             bot_wins += 1
 
-        print(f"Game {i+1}: Player = {player_score}, Bot = {bot_score}")
+        print(f"Game {i+1}: Player = {p_score}, Bot = {b_score}")
 
     print("\n==== Evaluation Summary ====")
     print(f"Player Wins: {player_wins}")
@@ -201,5 +232,5 @@ def evaluate(agent, num_games=10):
     print(f"Average Bot Score: {total_bot_score / num_games:.2f}")
 
 if __name__ == '__main__':
-    trained_agent = ppo_train(num_episodes=1500)
-    evaluate(trained_agent, num_games=500)
+    trained_agent = ppo_train(num_episodes=2000)
+    evaluate(trained_agent, num_games=100)
