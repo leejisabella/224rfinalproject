@@ -1,0 +1,205 @@
+slurm submission log: 2025-06-03 21:18:37.069631
+created following sbatch script: 
+
+###############################
+
+#!/bin/bash
+
+#SBATCH --account=nlp
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=azguo-job-923647
+#SBATCH --mem=20G
+#SBATCH --nodelist=jagupard31
+#SBATCH --open-mode=append
+#SBATCH --output=azguo-job-923647.out
+#SBATCH --partition=jag-standard
+#SBATCH --time=14-0
+
+# activate your desired anaconda environment
+
+
+# cd to working directory
+cd .
+
+# launch commands
+srun --unbuffered run_as_child_processes 'python3 ppo.py'
+
+###############################
+
+submission to slurm complete!
+
+
+###############################
+slurm submission output
+
+Submitted batch job 10399353
+
+
+
+###############################
+
+###############################
+start time: 2025-06-03 21:18:54.976943
+machine: jagupard31.stanford.edu
+conda env: 224r
+###############################
+running following processes
+
+	python3 ppo.py
+
+
+###############################
+command outputs: 
+
+
+[Episode    0] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode   50] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  100] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  150] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  200] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  250] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  300] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  350] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  400] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  450] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  500] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  550] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  600] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  650] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  700] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  750] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  800] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  850] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  900] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode  950] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1000] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1050] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1100] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1150] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1200] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1250] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1300] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1350] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1400] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1450] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1500] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1550] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1600] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1650] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1700] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1750] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1800] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1850] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1900] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+[Episode 1950] Δ(final diff) = 0.00, Sum(rewards) = -6.00
+Game   1: Player =  12, Bot =  -6
+Game   2: Player =   0, Bot =   0
+Game   3: Player =  12, Bot =  -6
+Game   4: Player =   0, Bot =   0
+Game   5: Player =   0, Bot =   0
+Game   6: Player =   0, Bot =   0
+Game   7: Player =  12, Bot =  -6
+Game   8: Player =   0, Bot =   0
+Game   9: Player =   0, Bot =   0
+Game  10: Player =   0, Bot =   0
+Game  11: Player =  12, Bot =  -6
+Game  12: Player =   0, Bot =   0
+Game  13: Player =   0, Bot =   0
+Game  14: Player =  12, Bot =  -6
+Game  15: Player =   0, Bot =   0
+Game  16: Player =   0, Bot =   0
+Game  17: Player =   0, Bot =   0
+Game  18: Player =   0, Bot =   0
+Game  19: Player =  12, Bot =  -6
+Game  20: Player =  12, Bot =  -6
+Game  21: Player =   0, Bot =   0
+Game  22: Player =  12, Bot =  -6
+Game  23: Player =  12, Bot =  -6
+Game  24: Player =  12, Bot =  -6
+Game  25: Player =   0, Bot =   0
+Game  26: Player =   0, Bot =   0
+Game  27: Player =  12, Bot =  -6
+Game  28: Player =  12, Bot =  -6
+Game  29: Player =  12, Bot =  -6
+Game  30: Player =   0, Bot =   0
+Game  31: Player =  12, Bot =  -6
+Game  32: Player =  12, Bot =  -6
+Game  33: Player =   0, Bot =   0
+Game  34: Player =   0, Bot =   0
+Game  35: Player =  12, Bot =  -6
+Game  36: Player =  12, Bot =  -6
+Game  37: Player =   0, Bot =   0
+Game  38: Player =   0, Bot =   0
+Game  39: Player =   0, Bot =   0
+Game  40: Player =   0, Bot =   0
+Game  41: Player =   0, Bot =   0
+Game  42: Player =   0, Bot =   0
+Game  43: Player =   0, Bot =   0
+Game  44: Player =   0, Bot =   0
+Game  45: Player =  12, Bot =  -6
+Game  46: Player =   0, Bot =   0
+Game  47: Player =  12, Bot =  -6
+Game  48: Player =   0, Bot =   0
+Game  49: Player =  12, Bot =  -6
+Game  50: Player =  12, Bot =  -6
+Game  51: Player =   0, Bot =   0
+Game  52: Player =   0, Bot =   0
+Game  53: Player =  12, Bot =  -6
+Game  54: Player =   0, Bot =   0
+Game  55: Player =  12, Bot =  -6
+Game  56: Player =  12, Bot =  -6
+Game  57: Player =   0, Bot =   0
+Game  58: Player =   0, Bot =   0
+Game  59: Player =   0, Bot =   0
+Game  60: Player =  12, Bot =  -6
+Game  61: Player =   0, Bot =   0
+Game  62: Player =   0, Bot =   0
+Game  63: Player =   0, Bot =   0
+Game  64: Player =   0, Bot =   0
+Game  65: Player =   0, Bot =   0
+Game  66: Player =   0, Bot =   0
+Game  67: Player =   0, Bot =   0
+Game  68: Player =   0, Bot =   0
+Game  69: Player =   0, Bot =   0
+Game  70: Player =   0, Bot =   0
+Game  71: Player =   0, Bot =   0
+Game  72: Player =   0, Bot =   0
+Game  73: Player =   0, Bot =   0
+Game  74: Player =   0, Bot =   0
+Game  75: Player =  12, Bot =  -6
+Game  76: Player =   0, Bot =   0
+Game  77: Player =   0, Bot =   0
+Game  78: Player =  12, Bot =  -6
+Game  79: Player =   0, Bot =   0
+Game  80: Player =   0, Bot =   0
+Game  81: Player =   0, Bot =   0
+Game  82: Player =   0, Bot =   0
+Game  83: Player =   0, Bot =   0
+Game  84: Player =   0, Bot =   0
+Game  85: Player =   0, Bot =   0
+Game  86: Player =   0, Bot =   0
+Game  87: Player =   0, Bot =   0
+Game  88: Player =   0, Bot =   0
+Game  89: Player =   0, Bot =   0
+Game  90: Player =   0, Bot =   0
+Game  91: Player =  12, Bot =  -6
+Game  92: Player =   0, Bot =   0
+Game  93: Player =  12, Bot =  -6
+Game  94: Player =   0, Bot =   0
+Game  95: Player =   0, Bot =   0
+Game  96: Player =   0, Bot =   0
+Game  97: Player =  12, Bot =  -6
+Game  98: Player =   0, Bot =   0
+Game  99: Player =   0, Bot =   0
+Game 100: Player =  12, Bot =  -6
+
+==== Evaluation Summary ====
+Player Wins: 31
+Bot Wins: 0
+Ties:        69
+Average Player Score: 3.72
+Average Bot Score:    -1.86
+###############################
+end time: 2025-06-03 21:20:45.094142
+elapsed time: 0:01:50.117199
