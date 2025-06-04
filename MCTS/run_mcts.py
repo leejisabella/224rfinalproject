@@ -49,6 +49,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--log_file", type=str)
     parser.add_argument("--cross_entropy", action='store_true')
+    parser.add_argument("--n_rums", type=int, default=10)
     parser.add_argument("--chosen_c_param", type=int, default=0.3)
     args = parser.parse_args()
 
@@ -89,7 +90,7 @@ if __name__ == "__main__":
 
     else:
         with open(args.log_file, "w") as f:
-            num_runs = 10
+            num_runs = args.n_runs
 
             total_p_points, total_b_points = 0, 0
             total_p_wins, total_b_wins = 0, 0
