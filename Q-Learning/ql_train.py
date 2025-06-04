@@ -13,7 +13,7 @@ ALPHA = 0.1
 GAMMA = 0.9
 EPISLON = 0.1
 
-EPISODES = 1000
+EPISODES = 2000
 
 def get_discrete_state(player_hand, current_card):
     rank_to_index = {
@@ -82,7 +82,7 @@ for ep in range(EPISODES):
 
         chosen_pos = positions[action]
         move = {'cards': [card], 'positions': [(chosen_pos, card)]}
-        bot_play = random_bot_agent(game.bot_hand, bot_card[0], game.player_hand)
+        bot_play = random_bot_agent(game.bot_hand, [bot_card[0]], game.player_hand)
 
         game.play_round(move, bot_play)
 

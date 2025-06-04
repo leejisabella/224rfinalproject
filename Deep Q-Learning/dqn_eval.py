@@ -6,7 +6,7 @@ from tqdm import tqdm
 from dqn_initial_placement import find_best_initial_placement_dqn
 
 STATE_DIM = 728
-NUM_GAMES = 300
+NUM_GAMES = 100
 
 def evaluate_dqn(agent, num_games=10, log_file="dqn_eval_results.txt"):
     total_p_points = 0

@@ -5,9 +5,10 @@ from collections import defaultdict
 from tqdm import tqdm
 import numpy as np
 
-NUM_EPISODES = 100
+NUM_EPISODES = 500
 
-with open("Q-Learning/q_table.pkl", "rb") as f:
+# Load SARSA Q-table
+with open("Q-Learning/q_table_sarsa.pkl", "rb") as f:
     Q = defaultdict(float, pickle.load(f))
 
 positions = ['top', 'middle', 'bottom']
@@ -56,7 +57,6 @@ def select_action(state, valid_actions):
     best_actions = [a for a, q in zip(valid_actions, q_vals) if q == max_q]
     return random.choice(best_actions)
 
-
 def evaluation():
     total_score = 0
     wins = 0
@@ -66,7 +66,7 @@ def evaluation():
     total_p_wins = 0
     total_b_wins = 0
     num_games = NUM_EPISODES
-    log_file = "Q-Learning/evaluation_results.txt"
+    log_file = "Q-Learning/evaluation_results_sarsa.txt"
 
     for _ in tqdm(range(NUM_EPISODES)):
         game = OpenFaceChinesePoker()
@@ -76,7 +76,7 @@ def evaluation():
             'cards': player_initial,
             'positions': [(random.choice(positions), c) for c in player_initial]
         }
-
+        
         bot_move = {
             'cards': bot_initial,
             'positions': [('bottom', c) for c in bot_initial]
@@ -88,7 +88,6 @@ def evaluation():
             state = get_discrete_state(game.player_hand, player_card[0])
             valid_actions = get_valid_actions(game.player_hand)
 
-            # choosing action based off of training on the q-table
             action = select_action(state, valid_actions)
 
             if action is None:
@@ -116,21 +115,21 @@ def evaluation():
     avg_score = total_score / NUM_EPISODES
     win_rate = wins / NUM_EPISODES
 
-    print(f"\nEvaluation over {NUM_EPISODES} games:")
+    print(f"\nSARSA Evaluation over {NUM_EPISODES} games:")
     print(f"Avg Player Score: {avg_score:.2f}")
     print(f"Win Rate: {win_rate * 100:.1f}%")
 
-    # writing in log
+    # writing log
     with open(log_file, "w") as f:
-        f.write(f"\n--- QL {NUM_EPISODES} Evaluation Summary ---\n")
-        f.write(f"Total QL Points: {total_p_points}\n")
+        f.write(f"\n--- SARSA {NUM_EPISODES} Evaluation Summary ---\n")
+        f.write(f"Total SARSA Points: {total_p_points}\n")
         f.write(f"Total Bot Points: {total_b_points}\n")
-        f.write(f"Average QL Points: {total_p_points / num_games:.2f}\n")
+        f.write(f"Average SARSA Points: {total_p_points / num_games:.2f}\n")
         f.write(f"Average Bot Points: {total_b_points / num_games:.2f}\n")
-        f.write(f"QL Wins: {total_p_wins}/{num_games} ({100 * total_p_wins / num_games:.1f}%)\n")
+        f.write(f"SARSA Wins: {total_p_wins}/{num_games} ({100 * total_p_wins / num_games:.1f}%)\n")
         f.write(f"Bot Wins: {total_b_wins}/{num_games} ({100 * total_b_wins / num_games:.1f}%)\n")
 
-    print("\nEvaluation results saved to:", log_file)
+    print("\nSARSA evaluation results saved to:", log_file)
 
 if __name__ == "__main__":
     evaluation()

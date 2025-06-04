@@ -6,7 +6,7 @@ from tqdm import tqdm
 import torch
 import random
 
-EPISODES = 1000
+EPISODES = 2000
 STATE_DIM = 728
 
 if __name__ == "__main__":
