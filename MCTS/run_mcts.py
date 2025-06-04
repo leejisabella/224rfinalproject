@@ -47,9 +47,9 @@ def evaluate_agent(agent, num_games=5):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--log_file")
+    parser.add_argument("--log_file", type=str)
     parser.add_argument("--cross_entropy", action='store_true')
-    parser.add_argument("--chosen_c_param")
+    parser.add_argument("--chosen_c_param", type=int, default=0.3)
     args = parser.parse_args()
 
     if args.cross_entropy:
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
     else:
         with open(args.log_file, "w") as f:
-            num_runs = 50
+            num_runs = 10
 
             total_p_points, total_b_points = 0, 0
             total_p_wins, total_b_wins = 0, 0
@@ -105,7 +105,7 @@ if __name__ == "__main__":
                 print(bot_initial)
 
                 # Use MCTS to find the optimal initial placement
-                best_initial_move = find_best_initial_placement(game, player_initial)
+                best_initial_move = find_best_initial_placement(game, player_initial, bot_initial)
                 bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
 
                 game.play_round(best_initial_move, bot_move)
@@ -123,20 +123,24 @@ if __name__ == "__main__":
                     bot_move = random_bot_agent(game.bot_hand, bot_card, game.player_hand)
                     game.play_round(move, bot_move)
 
-                    print("Player Hand at end of round:")
-                    print(game.player_hand.top)
-                    print(game.player_hand.middle)
-                    print(game.player_hand.bottom)
-                    print("Bot Hand at end of round:")
-                    print(game.bot_hand.top)
-                    print(game.bot_hand.middle)
-                    print(game.bot_hand.bottom)
-                    print("")
+                    # print("Player Hand at end of round:")
+                    # print(game.player_hand.top)
+                    # print(game.player_hand.middle)
+                    # print(game.player_hand.bottom)
+                    # print("Bot Hand at end of round:")
+                    # print(game.bot_hand.top)
+                    # print(game.bot_hand.middle)
+                    # print(game.bot_hand.bottom)
+                    # print("")
 
                 player_points, bot_points = game.calculate_scores()
                 print("Final Scores:")
                 print(f"Player (MCTS Agent): {player_points}")
                 print(f"Bot (Random Agent): {bot_points}")
+
+                f.write(f"Final Scores for Game {run}\n")
+                f.write(f"Player (MCTS Agent): {player_points}\n")
+                f.write(f"Bot (Random Agent): {bot_points}\n")
 
                 total_p_points += player_points
                 total_b_points += bot_points
@@ -158,7 +162,7 @@ if __name__ == "__main__":
 
             # written results
             f.write("\n--- MCTS Summary ---\n")
-            f.write(f"c_param: {args.chosen_c_param}")
+            f.write(f"c_param: {args.chosen_c_param}\n")
             f.write(f"Total MCTS Points: {total_p_points}\n")
             f.write(f"Total Bot Points: {total_b_points}\n")
             f.write(f"Average MCTS Points: {total_p_points / num_runs:.2f}\n")
