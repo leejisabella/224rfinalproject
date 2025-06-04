@@ -4,9 +4,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from collections import deque
+
 class QNetwork(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(QNetwork, self).__init__()
+        # defaulting to this neural network
         self.net = nn.Sequential(
             nn.Linear(input_dim, 128),
             nn.ReLU(),
@@ -29,6 +31,8 @@ class DQNAgent:
 
         self.q_net = QNetwork(state_dim, action_dim)
         self.target_net = QNetwork(state_dim, action_dim)
+        
+        # could attempt to get different optimizations over here
         self.optimizer = optim.Adam(self.q_net.parameters(), lr=lr)
         self.loss_fn = nn.MSELoss()
 

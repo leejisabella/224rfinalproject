@@ -5,7 +5,6 @@ from itertools import combinations
 # Basic card representation
 Card = namedtuple('Card', ['rank', 'suit'])
 
-
 # Poker hand rankings helper
 def evaluate_hand(cards):
     ranks = '23456789TJQKA'
