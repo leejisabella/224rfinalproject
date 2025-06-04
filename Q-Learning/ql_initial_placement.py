@@ -70,7 +70,6 @@ def evaluate_initial_placement_q(game_state, initial_move):
     state = get_discrete_state(temp_game.player_hand, next_card)
     valid_actions = get_valid_actions(temp_game.player_hand)
 
-    # Lookup max Q value for next state
     q_values = [Q.get((state, a), 0.0) for a in valid_actions]
     return max(q_values, default=0.0)
 
