@@ -1,0 +1,8 @@
+
+--- QL 500 Evaluation Summary ---
+Total QL Points: 898
+Total Bot Points: 1062
+Average QL Points: 1.80
+Average Bot Points: 2.12
+QL Wins: 123/500 (24.6%)
+Bot Wins: 122/500 (24.4%)
