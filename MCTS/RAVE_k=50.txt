@@ -1,0 +1,39 @@
+Final Scores for Game 0
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 1
+Player (MCTS Agent): 12
+Bot (Random Agent): 7
+Final Scores for Game 2
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 3
+Player (MCTS Agent): 0
+Bot (Random Agent): 0
+Final Scores for Game 4
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 5
+Player (MCTS Agent): 0
+Bot (Random Agent): 0
+Final Scores for Game 6
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 7
+Player (MCTS Agent): 6
+Bot (Random Agent): 12
+Final Scores for Game 8
+Player (MCTS Agent): -6
+Bot (Random Agent): 12
+Final Scores for Game 9
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+
+--- MCTS Summary ---
+c_param: 10.7251
+Total MCTS Points: 72
+Total Bot Points: 1
+Average MCTS Points: 7.20
+Average Bot Points: 0.10
+MCTS Wins: 6/10 (60.0%)
+Bot Wins: 2/10 (20.0%)

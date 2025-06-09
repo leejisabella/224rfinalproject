@@ -1,0 +1,24 @@
+Final Scores for Game 0
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 1
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 2
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 3
+Player (MCTS Agent): 0
+Bot (Random Agent): 0
+Final Scores for Game 4
+Player (MCTS Agent): 0
+Bot (Random Agent): 0
+Final Scores for Game 5
+Player (MCTS Agent): 12
+Bot (Random Agent): -6
+Final Scores for Game 6
+Player (MCTS Agent): 0
+Bot (Random Agent): 0
+Final Scores for Game 7
+Player (MCTS Agent): 8
+Bot (Random Agent): 7

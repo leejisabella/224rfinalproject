@@ -29,7 +29,7 @@ class Node:
     def is_fully_expanded(self):
         return len(self.untried_actions) == 0
 
-    def best_child(self, c_param=1.4, rave=False, k=100):
+    def best_child(self, c_param=1.4, rave=False, k=50):
         if rave:
             choices = []
             for child in self.children:
