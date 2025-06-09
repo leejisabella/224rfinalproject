@@ -187,7 +187,7 @@ class OpenFaceChinesePoker:
         # print(self.bot_hand.middle)            
         # print(self.bot_hand.bottom)
 
-        return self.player_hand.is_complete() and self.bot_hand.is_complete()
+        return (self.player_hand.is_complete() and self.bot_hand.is_complete()) or (len(self.deck.cards) < 2)
     
     def calculate_scores(self):
         player_points, bot_points = 0, 0

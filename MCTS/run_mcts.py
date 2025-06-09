@@ -6,8 +6,9 @@ from tqdm import tqdm
 import numpy as np
 import random
 import argparse
+from cfr import CFRPolicyBot, load_regret_table
 
-def evaluate_agent(agent, num_games=5, rave=False):
+def evaluate_agent(agent, num_games=5, rave=False, cfr=False):
     total_points = 0
 
     for _ in range(num_games):
@@ -16,7 +17,7 @@ def evaluate_agent(agent, num_games=5, rave=False):
         player_initial, bot_initial = game.initial_deal()
         
         # Optimal initial placement (using your existing method)
-        best_initial_move = find_best_initial_placement(game, player_initial, bot_initial, rave=rave)
+        best_initial_move = find_best_initial_placement(game, player_initial, bot_initial, rave=rave, cfr=cfr)
         bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
         game.play_round(best_initial_move, bot_move)
 
@@ -52,7 +53,12 @@ if __name__ == "__main__":
     parser.add_argument("--n_runs", type=int, default=10)
     parser.add_argument("--chosen_c_param", type=int, default=10.7251)
     parser.add_argument("--rave", action='store_true')
+    parser.add_argument("--cfr", action='store_true')
     args = parser.parse_args()
+
+    cfr_check = False
+    if args.cfr:
+        cfr_check = True
 
     if args.cross_entropy:
         with open(args.log_file, "w") as f:
@@ -71,8 +77,8 @@ if __name__ == "__main__":
                 # Evaluate each c_param
                 performance = []
                 for c_param in tqdm(samples, desc=f"Iteration {iteration+1}"):
-                    agent = MCTSAgent(num_simulations=100, c_param=c_param)
-                    total_reward = evaluate_agent(agent, rave=args.rave)  # define this clearly below
+                    agent = MCTSAgent(num_simulations=100, c_param=c_param, cfr=cfr_check)
+                    total_reward = evaluate_agent(agent, rave=args.rave, cfr=cfr_check)  # define this clearly below
                     performance.append((c_param, total_reward))
 
                     f.write(f"Tracking: {c_param} parameter with {total_reward} reward. \n")
@@ -103,7 +109,14 @@ if __name__ == "__main__":
 
             for run in tqdm(range(num_runs)):
                 game = OpenFaceChinesePoker()
-                agent = MCTSAgent(num_simulations=50, c_param=args.chosen_c_param)
+
+                if cfr_check:
+                    load_regret_table("cfr_table.pkl")
+                    cfr_bot = CFRPolicyBot()
+                else:
+                    cfr_bot = None
+
+                agent = MCTSAgent(num_simulations=50, c_param=args.chosen_c_param, rollout_policy=cfr_bot, cfr=cfr_check)
 
                 player_initial, bot_initial = game.initial_deal()
 
@@ -112,7 +125,7 @@ if __name__ == "__main__":
                 print(bot_initial)
 
                 # Use MCTS to find the optimal initial placement
-                best_initial_move = find_best_initial_placement(game, player_initial, bot_initial, rave=args.rave)
+                best_initial_move = find_best_initial_placement(game, player_initial, bot_initial, rave=args.rave, cfr=cfr_check)
                 bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
 
                 game.play_round(best_initial_move, bot_move)

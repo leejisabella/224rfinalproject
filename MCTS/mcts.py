@@ -29,7 +29,7 @@ class Node:
     def is_fully_expanded(self):
         return len(self.untried_actions) == 0
 
-    def best_child(self, c_param=1.4, rave=False, k=50):
+    def best_child(self, c_param=1.4, rave=False, k=75):
         if rave:
             choices = []
             for child in self.children:
@@ -80,9 +80,17 @@ class Node:
 
 
 class MCTSAgent:
-    def __init__(self, num_simulations=100, c_param=1.4):
+    def __init__(self, num_simulations=100, c_param=1.4, 
+                 rollout_policy=None, cfr=False):
         self.num_simulations = num_simulations
         self.c_param = c_param
+        self.rollout_policy = rollout_policy
+        self.cfr = cfr
+
+    def _policy_move(self, state, hand, card):
+        if self.rollout_policy is None:
+            return random_bot_agent(hand, [card], state.bot_hand)
+        return self.rollout_policy.choose(state, card)
 
     def search(self, initial_state, card, rave=False):
         root = Node(deepcopy(initial_state))
@@ -177,12 +185,25 @@ class MCTSAgent:
                             best_score = score
                             best_move = {'cards': [player_card[0]], 'positions': [(pos, player_card[0])]}
 
-                player_move = best_move if best_move else random_bot_agent(state.player_hand, player_card, state.bot_hand)
+                if self.cfr:
+                    player_move = best_move if best_move else \
+                              self._policy_move(state, state.player_hand,
+                                                player_card[0])
+                else:
+                    player_move = best_move if best_move else random_bot_agent(state.player_hand, player_card, state.bot_hand)
                 first_move = False
             else:
-                player_move = random_bot_agent(state.player_hand, player_card, state.bot_hand)
+                if self.cfr: 
+                    player_move = self._policy_move(state, state.player_hand,
+                                                player_card[0])
+                else:
+                    player_move = random_bot_agent(state.player_hand, player_card, state.bot_hand)
 
-            bot_move = random_bot_agent(state.bot_hand, bot_card, state.player_hand)
+            if self.cfr:
+                bot_move = self._policy_move(state, state.bot_hand,
+                                         bot_card[0])
+            else:
+                bot_move = random_bot_agent(state.bot_hand, bot_card, state.player_hand)
 
             if player_move['positions'] and bot_move['positions']:
                 state.play_round(player_move, bot_move)
@@ -220,14 +241,14 @@ class MCTSAgent:
                             best_move  = {'cards': [player_card[0]],
                                         'positions': [(pos, player_card[0])]}
                 # ---------- choose the move that will really be played ----------
-                if best_move is None:                             # <-- FIX ①
+                if best_move is None: 
                     player_move = random_bot_agent(state.player_hand,
                                                 player_card,
                                                 state.bot_hand)
                 else:
                     player_move = best_move
 
-                if player_move['positions']:                      # <-- FIX ②
+                if player_move['positions']: 
                     chosen_pos = player_move['positions'][0][0]
                     player_actions.add(chosen_pos)
 
