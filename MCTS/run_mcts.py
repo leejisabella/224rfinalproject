@@ -7,7 +7,7 @@ import numpy as np
 import random
 import argparse
 
-def evaluate_agent(agent, num_games=5):
+def evaluate_agent(agent, num_games=5, rave=False):
     total_points = 0
 
     for _ in range(num_games):
@@ -16,7 +16,7 @@ def evaluate_agent(agent, num_games=5):
         player_initial, bot_initial = game.initial_deal()
         
         # Optimal initial placement (using your existing method)
-        best_initial_move = find_best_initial_placement(game, player_initial, bot_initial)
+        best_initial_move = find_best_initial_placement(game, player_initial, bot_initial, rave=rave)
         bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
         game.play_round(best_initial_move, bot_move)
 
@@ -24,7 +24,7 @@ def evaluate_agent(agent, num_games=5):
         while not game.game_over():
             player_card, bot_card = game.deal_next_cards()
 
-            chosen_pos = agent.search(game, player_card[0])
+            chosen_pos = agent.search(game, player_card[0], rave=args.rave)
 
             # if chosen_pos is None:
             #     available_positions = [
@@ -50,43 +50,49 @@ if __name__ == "__main__":
     parser.add_argument("--log_file", type=str)
     parser.add_argument("--cross_entropy", action='store_true')
     parser.add_argument("--n_runs", type=int, default=10)
-    parser.add_argument("--chosen_c_param", type=int, default=0.3)
+    parser.add_argument("--chosen_c_param", type=int, default=10.7251)
+    parser.add_argument("--rave", action='store_true')
     args = parser.parse_args()
 
     if args.cross_entropy:
-        mean = 5   # initial guess for c_param
-        std_dev = 2  # initial standard deviation
-        num_samples = 5  # number of samples per iteration
-        elite_fraction = 0.2  # top 20% elite samples
-        num_iterations = 3  # total CEM iterations
+        with open(args.log_file, "w") as f:
+            mean = 10.7251   # initial guess for c_param
+            std_dev = 0.5  # initial standard deviation
+            num_samples = 5  # number of samples per iteration
+            elite_fraction = 0.2  # top 20% elite samples
+            num_iterations = 3  # total CEM iterations
 
-        best_c_param = mean  # to track best parameter found
+            best_c_param = mean  # to track best parameter found
 
-        for iteration in tqdm(range(num_iterations)):
-            # Sample candidate parameters
-            samples = np.random.normal(mean, std_dev, num_samples)
+            for iteration in tqdm(range(num_iterations)):
+                # Sample candidate parameters
+                samples = np.random.normal(mean, std_dev, num_samples)
 
-            # Evaluate each c_param
-            performance = []
-            for c_param in tqdm(samples, desc=f"Iteration {iteration+1}"):
-                agent = MCTSAgent(num_simulations=100, c_param=c_param)
-                total_reward = evaluate_agent(agent)  # define this clearly below
-                performance.append((c_param, total_reward))
+                # Evaluate each c_param
+                performance = []
+                for c_param in tqdm(samples, desc=f"Iteration {iteration+1}"):
+                    agent = MCTSAgent(num_simulations=100, c_param=c_param)
+                    total_reward = evaluate_agent(agent, rave=args.rave)  # define this clearly below
+                    performance.append((c_param, total_reward))
 
-            # Select elite samples
-            performance.sort(key=lambda x: x[1], reverse=True)  # sort by performance
-            elite_cutoff = int(num_samples * elite_fraction)
-            elite_samples = [x[0] for x in performance[:elite_cutoff]]
+                    f.write(f"Tracking: {c_param} parameter with {total_reward} reward. \n")
 
-            # Update mean and std_dev
-            mean = np.mean(elite_samples)
-            std_dev = np.std(elite_samples)
+                # Select elite samples
+                performance.sort(key=lambda x: x[1], reverse=True)  # sort by performance
+                elite_cutoff = int(num_samples * elite_fraction)
+                elite_samples = [x[0] for x in performance[:elite_cutoff]]
 
-            best_c_param = elite_samples[0]  # best parameter this iteration
+                # Update mean and std_dev
+                mean = np.mean(elite_samples)
+                std_dev = np.std(elite_samples)
 
-            print(f"Iteration {iteration+1} | New mean: {mean:.4f}, New std_dev: {std_dev:.4f}, Best c_param: {best_c_param:.4f}")
+                best_c_param = elite_samples[0]  # best parameter this iteration
 
-        print(f"\nOptimal c_param found: {best_c_param:.4f}")
+                print(f"Iteration {iteration+1} | New mean: {mean:.4f}, New std_dev: {std_dev:.4f}, Best c_param: {best_c_param:.4f}")
+                f.write(f"Iteration {iteration+1} | New mean: {mean:.4f}, New std_dev: {std_dev:.4f}, Best c_param: {best_c_param:.4f} \n")
+
+            print(f"\nOptimal c_param found: {best_c_param:.4f}")
+            f.write(f"\nOptimal c_param found: {best_c_param:.4f}")
 
     else:
         with open(args.log_file, "w") as f:
@@ -106,7 +112,7 @@ if __name__ == "__main__":
                 print(bot_initial)
 
                 # Use MCTS to find the optimal initial placement
-                best_initial_move = find_best_initial_placement(game, player_initial, bot_initial)
+                best_initial_move = find_best_initial_placement(game, player_initial, bot_initial, rave=args.rave)
                 bot_move = random_bot_agent(game.bot_hand, bot_initial, game.player_hand)
 
                 game.play_round(best_initial_move, bot_move)
@@ -118,7 +124,7 @@ if __name__ == "__main__":
                     # print(bot_card)
 
                     # Explicitly returns the chosen position (top, middle, or bottom)
-                    chosen_pos = agent.search(game, player_card[0])
+                    chosen_pos = agent.search(game, player_card[0], rave=args.rave)
                     move = {'cards': [player_card[0]], 'positions': [(chosen_pos, player_card[0])]}
 
                     bot_move = random_bot_agent(game.bot_hand, bot_card, game.player_hand)

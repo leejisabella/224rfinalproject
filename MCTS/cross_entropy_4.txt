@@ -1,0 +1,13 @@
+Tracking: 9.867254224431788 parameter with 9.2 reward. 
+Tracking: 9.429088314296331 parameter with 10.0 reward. 
+Tracking: 8.014668862384783 parameter with 9.0 reward. 
+Tracking: 10.775052882620942 parameter with 11.0 reward. 
+Tracking: 9.95520106185681 parameter with 7.2 reward. 
+Iteration 1 | New mean: 10.7751, New std_dev: 0.0000, Best c_param: 10.7751 
+Tracking: 10.775052882620942 parameter with 11.2 reward. 
+Tracking: 10.775052882620942 parameter with 6.6 reward. 
+Tracking: 10.775052882620942 parameter with 7.2 reward. 
+Tracking: 10.775052882620942 parameter with 8.4 reward. 
+Tracking: 10.775052882620942 parameter with 13.2 reward. 
+Iteration 2 | New mean: 10.7751, New std_dev: 0.0000, Best c_param: 10.7751 
+Tracking: 10.775052882620942 parameter with 12.0 reward. 

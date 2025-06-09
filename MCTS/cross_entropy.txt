@@ -1,0 +1,3 @@
+Tracking: 4.400014099626659 parameter with 11.2 reward. 
+Tracking: 4.295326952215465 parameter with 7.4 reward. 
+Tracking: 2.3718418269991406 parameter with 8.4 reward. 
