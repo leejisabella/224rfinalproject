@@ -1,0 +1,111 @@
+Game 1 | Double DQN: 12, Bot: -6
+Game 2 | Double DQN: -6, Bot: 12
+Game 3 | Double DQN: 0, Bot: 0
+Game 4 | Double DQN: 12, Bot: -6
+Game 5 | Double DQN: 6, Bot: 12
+Game 6 | Double DQN: 8, Bot: 7
+Game 7 | Double DQN: -6, Bot: 12
+Game 8 | Double DQN: 12, Bot: -6
+Game 9 | Double DQN: 0, Bot: 0
+Game 10 | Double DQN: 12, Bot: -6
+Game 11 | Double DQN: 0, Bot: 0
+Game 12 | Double DQN: 0, Bot: 0
+Game 13 | Double DQN: 12, Bot: -6
+Game 14 | Double DQN: 0, Bot: 0
+Game 15 | Double DQN: 12, Bot: -6
+Game 16 | Double DQN: -6, Bot: 12
+Game 17 | Double DQN: 0, Bot: 0
+Game 18 | Double DQN: -6, Bot: 12
+Game 19 | Double DQN: 16, Bot: -6
+Game 20 | Double DQN: 6, Bot: 12
+Game 21 | Double DQN: 12, Bot: -6
+Game 22 | Double DQN: 0, Bot: 0
+Game 23 | Double DQN: 6, Bot: 12
+Game 24 | Double DQN: -6, Bot: 12
+Game 25 | Double DQN: 0, Bot: 0
+Game 26 | Double DQN: -6, Bot: 12
+Game 27 | Double DQN: 12, Bot: -6
+Game 28 | Double DQN: -6, Bot: 12
+Game 29 | Double DQN: 12, Bot: -6
+Game 30 | Double DQN: 12, Bot: -6
+Game 31 | Double DQN: 12, Bot: -6
+Game 32 | Double DQN: 0, Bot: 0
+Game 33 | Double DQN: 0, Bot: 0
+Game 34 | Double DQN: 12, Bot: -6
+Game 35 | Double DQN: 12, Bot: -6
+Game 36 | Double DQN: 0, Bot: 0
+Game 37 | Double DQN: 0, Bot: 0
+Game 38 | Double DQN: 6, Bot: 12
+Game 39 | Double DQN: -6, Bot: 12
+Game 40 | Double DQN: 0, Bot: 0
+Game 41 | Double DQN: 0, Bot: 0
+Game 42 | Double DQN: 0, Bot: 0
+Game 43 | Double DQN: 0, Bot: 0
+Game 44 | Double DQN: 8, Bot: 7
+Game 45 | Double DQN: -6, Bot: 12
+Game 46 | Double DQN: 12, Bot: -6
+Game 47 | Double DQN: -6, Bot: 12
+Game 48 | Double DQN: 12, Bot: -6
+Game 49 | Double DQN: 0, Bot: 0
+Game 50 | Double DQN: 12, Bot: 6
+Game 51 | Double DQN: 12, Bot: -6
+Game 52 | Double DQN: 0, Bot: 0
+Game 53 | Double DQN: 0, Bot: 0
+Game 54 | Double DQN: 0, Bot: 0
+Game 55 | Double DQN: 12, Bot: -6
+Game 56 | Double DQN: 12, Bot: -6
+Game 57 | Double DQN: 0, Bot: 0
+Game 58 | Double DQN: 0, Bot: 0
+Game 59 | Double DQN: 12, Bot: -6
+Game 60 | Double DQN: 12, Bot: -6
+Game 61 | Double DQN: 12, Bot: -6
+Game 62 | Double DQN: 0, Bot: 0
+Game 63 | Double DQN: -6, Bot: 12
+Game 64 | Double DQN: 0, Bot: 0
+Game 65 | Double DQN: 12, Bot: -6
+Game 66 | Double DQN: 12, Bot: -6
+Game 67 | Double DQN: 0, Bot: 0
+Game 68 | Double DQN: 6, Bot: 12
+Game 69 | Double DQN: 12, Bot: -6
+Game 70 | Double DQN: 12, Bot: -6
+Game 71 | Double DQN: -6, Bot: 12
+Game 72 | Double DQN: -6, Bot: 12
+Game 73 | Double DQN: 12, Bot: -6
+Game 74 | Double DQN: 0, Bot: 0
+Game 75 | Double DQN: 0, Bot: 0
+Game 76 | Double DQN: 12, Bot: -6
+Game 77 | Double DQN: 0, Bot: 0
+Game 78 | Double DQN: 0, Bot: 0
+Game 79 | Double DQN: 0, Bot: 0
+Game 80 | Double DQN: -6, Bot: 12
+Game 81 | Double DQN: 12, Bot: -6
+Game 82 | Double DQN: 12, Bot: -6
+Game 83 | Double DQN: 0, Bot: 0
+Game 84 | Double DQN: 0, Bot: 0
+Game 85 | Double DQN: 12, Bot: -6
+Game 86 | Double DQN: 0, Bot: 0
+Game 87 | Double DQN: 0, Bot: 0
+Game 88 | Double DQN: 0, Bot: 0
+Game 89 | Double DQN: 6, Bot: 14
+Game 90 | Double DQN: 0, Bot: 0
+Game 91 | Double DQN: -6, Bot: 12
+Game 92 | Double DQN: 12, Bot: -6
+Game 93 | Double DQN: 0, Bot: 0
+Game 94 | Double DQN: -6, Bot: 12
+Game 95 | Double DQN: 0, Bot: 0
+Game 96 | Double DQN: -6, Bot: 12
+Game 97 | Double DQN: 0, Bot: 0
+Game 98 | Double DQN: 0, Bot: 0
+Game 99 | Double DQN: 0, Bot: 0
+Game 100 | Double DQN: 0, Bot: 0
+
+--- Double DQN Evaluation Summary ---
+Total Double DQN Points: 350
+Total Bot Points: 106
+Average Double DQN Points: 3.50
+Average Bot Points: 1.06
+Double DQN Wins: 35/100 (35.0%)
+Bot Wins: 23/100 (23.0%)
+
+Training Time: 4m 12s
+Evaluation Time: 4s

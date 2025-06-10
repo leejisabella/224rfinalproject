@@ -8,6 +8,7 @@ from collections import deque
 class QNetwork(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(QNetwork, self).__init__()
+
         # defaulting to this neural network
         self.net = nn.Sequential(
             nn.Linear(input_dim, 128),
@@ -49,16 +50,19 @@ class DQNAgent:
             q_values = self.q_net(state_tensor)
             return torch.argmax(q_values).item()
 
+    # create memory buffer
     def remember(self, state, action, reward, next_state, done):
         self.replay_buffer.append((state, action, reward, next_state, done))
 
     def replay(self):
         if len(self.replay_buffer) < self.batch_size:
             return
-
+        
+        # sample actions randomly in DQN
         batch = random.sample(self.replay_buffer, self.batch_size)
-        states, actions, rewards, next_states, dones = zip(*batch)
 
+        # unzipping values
+        states, actions, rewards, next_states, dones = zip(*batch)
         states = torch.FloatTensor(states)
         next_states = torch.FloatTensor(next_states)
         actions = torch.LongTensor(actions).unsqueeze(1)

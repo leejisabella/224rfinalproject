@@ -3,7 +3,6 @@ from copy import deepcopy
 import pickle
 import numpy as np
 
-# Load SARSA Q-table
 with open("Q-Learning/q_table_sarsa.pkl", "rb") as f:
     Q = pickle.load(f)
 

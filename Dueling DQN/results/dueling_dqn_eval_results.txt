@@ -1,0 +1,111 @@
+Game 1 | Dueling DQN: 12, Bot: -6
+Game 2 | Dueling DQN: -6, Bot: 12
+Game 3 | Dueling DQN: 0, Bot: 0
+Game 4 | Dueling DQN: 12, Bot: -6
+Game 5 | Dueling DQN: 12, Bot: -6
+Game 6 | Dueling DQN: -6, Bot: 12
+Game 7 | Dueling DQN: 0, Bot: 0
+Game 8 | Dueling DQN: 12, Bot: -6
+Game 9 | Dueling DQN: 12, Bot: -6
+Game 10 | Dueling DQN: 12, Bot: -6
+Game 11 | Dueling DQN: 0, Bot: 0
+Game 12 | Dueling DQN: 0, Bot: 0
+Game 13 | Dueling DQN: 12, Bot: -6
+Game 14 | Dueling DQN: -6, Bot: 12
+Game 15 | Dueling DQN: 0, Bot: 0
+Game 16 | Dueling DQN: 12, Bot: -6
+Game 17 | Dueling DQN: 0, Bot: 0
+Game 18 | Dueling DQN: 12, Bot: -6
+Game 19 | Dueling DQN: 0, Bot: 0
+Game 20 | Dueling DQN: 0, Bot: 0
+Game 21 | Dueling DQN: 0, Bot: 0
+Game 22 | Dueling DQN: 8, Bot: 7
+Game 23 | Dueling DQN: -6, Bot: 12
+Game 24 | Dueling DQN: -6, Bot: 12
+Game 25 | Dueling DQN: 0, Bot: 0
+Game 26 | Dueling DQN: 0, Bot: 0
+Game 27 | Dueling DQN: 12, Bot: -6
+Game 28 | Dueling DQN: 12, Bot: 6
+Game 29 | Dueling DQN: -6, Bot: 12
+Game 30 | Dueling DQN: 0, Bot: 0
+Game 31 | Dueling DQN: -6, Bot: 12
+Game 32 | Dueling DQN: 0, Bot: 0
+Game 33 | Dueling DQN: 0, Bot: 0
+Game 34 | Dueling DQN: 7, Bot: 8
+Game 35 | Dueling DQN: 0, Bot: 0
+Game 36 | Dueling DQN: 0, Bot: 0
+Game 37 | Dueling DQN: 0, Bot: 0
+Game 38 | Dueling DQN: 6, Bot: 12
+Game 39 | Dueling DQN: 0, Bot: 0
+Game 40 | Dueling DQN: 0, Bot: 0
+Game 41 | Dueling DQN: 0, Bot: 0
+Game 42 | Dueling DQN: -6, Bot: 12
+Game 43 | Dueling DQN: 0, Bot: 0
+Game 44 | Dueling DQN: 12, Bot: -6
+Game 45 | Dueling DQN: -6, Bot: 12
+Game 46 | Dueling DQN: -6, Bot: 12
+Game 47 | Dueling DQN: 0, Bot: 0
+Game 48 | Dueling DQN: 0, Bot: 0
+Game 49 | Dueling DQN: 0, Bot: 0
+Game 50 | Dueling DQN: 0, Bot: 0
+Game 51 | Dueling DQN: 0, Bot: 0
+Game 52 | Dueling DQN: -6, Bot: 12
+Game 53 | Dueling DQN: 0, Bot: 0
+Game 54 | Dueling DQN: 0, Bot: 0
+Game 55 | Dueling DQN: 0, Bot: 0
+Game 56 | Dueling DQN: -6, Bot: 12
+Game 57 | Dueling DQN: 12, Bot: -6
+Game 58 | Dueling DQN: 12, Bot: -6
+Game 59 | Dueling DQN: 12, Bot: -6
+Game 60 | Dueling DQN: 12, Bot: 6
+Game 61 | Dueling DQN: 0, Bot: 0
+Game 62 | Dueling DQN: 12, Bot: -6
+Game 63 | Dueling DQN: 8, Bot: 7
+Game 64 | Dueling DQN: 0, Bot: 0
+Game 65 | Dueling DQN: -6, Bot: 12
+Game 66 | Dueling DQN: 12, Bot: -6
+Game 67 | Dueling DQN: 12, Bot: -6
+Game 68 | Dueling DQN: 0, Bot: 0
+Game 69 | Dueling DQN: 0, Bot: 0
+Game 70 | Dueling DQN: 12, Bot: -6
+Game 71 | Dueling DQN: 12, Bot: -6
+Game 72 | Dueling DQN: 12, Bot: -6
+Game 73 | Dueling DQN: -6, Bot: 12
+Game 74 | Dueling DQN: 12, Bot: -6
+Game 75 | Dueling DQN: 0, Bot: 0
+Game 76 | Dueling DQN: 0, Bot: 0
+Game 77 | Dueling DQN: -6, Bot: 12
+Game 78 | Dueling DQN: 0, Bot: 0
+Game 79 | Dueling DQN: 0, Bot: 0
+Game 80 | Dueling DQN: 0, Bot: 0
+Game 81 | Dueling DQN: 0, Bot: 0
+Game 82 | Dueling DQN: 12, Bot: -6
+Game 83 | Dueling DQN: 8, Bot: 7
+Game 84 | Dueling DQN: 12, Bot: -6
+Game 85 | Dueling DQN: 12, Bot: -6
+Game 86 | Dueling DQN: 12, Bot: -6
+Game 87 | Dueling DQN: 6, Bot: 12
+Game 88 | Dueling DQN: 0, Bot: 0
+Game 89 | Dueling DQN: 0, Bot: 0
+Game 90 | Dueling DQN: 12, Bot: -6
+Game 91 | Dueling DQN: -6, Bot: 12
+Game 92 | Dueling DQN: 6, Bot: 12
+Game 93 | Dueling DQN: 0, Bot: 0
+Game 94 | Dueling DQN: -6, Bot: 12
+Game 95 | Dueling DQN: -6, Bot: 12
+Game 96 | Dueling DQN: 12, Bot: -6
+Game 97 | Dueling DQN: 0, Bot: 0
+Game 98 | Dueling DQN: 0, Bot: 0
+Game 99 | Dueling DQN: 12, Bot: -6
+Game 100 | Dueling DQN: 0, Bot: 0
+
+--- Dueling DQN Evaluation Summary ---
+Total Dueling DQN Points: 301
+Total Bot Points: 125
+Average Dueling DQN Points: 3.01
+Average Bot Points: 1.25
+Dueling DQN Wins: 33/100 (33.0%)
+Bot Wins: 22/100 (22.0%)
+
+Training Time: 2m 21s
+Evaluation Time: 5s
