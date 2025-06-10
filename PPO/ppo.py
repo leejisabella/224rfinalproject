@@ -6,14 +6,9 @@ import torch.optim as optim
 import torch.nn.functional as F
 
 # -------------------------------------------------------------------------
-#  Local imports
-# -------------------------------------------------------------------------
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from MCTS.ofcp_player import OpenFaceChinesePoker, random_bot_agent, evaluate_hand
 
-# -------------------------------------------------------------------------
-#  Model
-# -------------------------------------------------------------------------
 class PPOAgent(nn.Module):
     def __init__(self, inp: int = 8, act: int = 3):
         super().__init__()
@@ -25,9 +20,7 @@ class PPOAgent(nn.Module):
         x = F.relu(self.fc1(x))
         return F.softmax(self.pi(x), dim=-1), self.v(x).squeeze(-1)
 
-# -------------------------------------------------------------------------
-#  State encoder
-# -------------------------------------------------------------------------
+
 def encode_state(hand, card):
     """Return an 8-dim tensor: 6 pile-strength features + 2 card features."""
     def pile(p):
@@ -45,9 +38,7 @@ def encode_state(hand, card):
         dtype=torch.float32
     )
 
-# -------------------------------------------------------------------------
-#  PPO-GAE training loop with tie penalties and scoop bonuses
-# -------------------------------------------------------------------------
+#  PPO-GAE training loop with additional tie penalties and scoop bonuses
 def ppo_train(episodes=2000, lr=5e-4, eps=0.2, γ=0.99, λ=0.95):
     agent = PPOAgent()
     opt   = optim.Adam(agent.parameters(), lr=lr)
@@ -236,9 +227,6 @@ def evaluate(agent, games=100):
     print(f'Average score  Player {tot_p / games:6.2f}   Bot {tot_b / games:6.2f}')
 
 
-# -------------------------------------------------------------------------
-#  Main
-# -------------------------------------------------------------------------
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--episodes',    type=int, default=2000)
