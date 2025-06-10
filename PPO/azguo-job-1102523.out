@@ -1,0 +1,101 @@
+slurm submission log: 2025-06-09 20:28:49.182584
+created following sbatch script: 
+
+###############################
+
+#!/bin/bash
+
+#SBATCH --account=nlp
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=azguo-job-1102523
+#SBATCH --mem=50G
+#SBATCH --nodelist=sphinx1
+#SBATCH --open-mode=append
+#SBATCH --output=azguo-job-1102523.out
+#SBATCH --partition=sphinx
+#SBATCH --time=14-0
+
+# activate your desired anaconda environment
+
+
+# cd to working directory
+cd .
+
+# launch commands
+srun --unbuffered run_as_child_processes 'python3 ppo.py --episodes 2000 --eval_games 1000'
+
+###############################
+
+submission to slurm complete!
+
+
+###############################
+slurm submission output
+
+Submitted batch job 10412558
+
+
+
+###############################
+
+###############################
+start time: 2025-06-09 20:28:51.049655
+machine: sphinx1
+conda env: 224r
+###############################
+running following processes
+
+	python3 ppo.py --episodes 2000 --eval_games 1000
+
+
+###############################
+command outputs: 
+
+
+[EP    0] loss=19.205  π-loss=5.279  V-loss=27.870
+[EP   50] loss=23.169  π-loss=5.882  V-loss=34.596
+[EP  100] loss=19.831  π-loss=5.378  V-loss=28.927
+[EP  150] loss=20.736  π-loss=5.519  V-loss=30.456
+[EP  200] loss=23.309  π-loss=5.902  V-loss=34.836
+[EP  250] loss=20.925  π-loss=5.548  V-loss=30.777
+[EP  300] loss=23.188  π-loss=5.885  V-loss=34.629
+[EP  350] loss=21.492  π-loss=5.634  V-loss=31.739
+[EP  400] loss=20.734  π-loss=5.518  V-loss=30.453
+[EP  450] loss=20.352  π-loss=5.460  V-loss=29.806
+[EP  500] loss=23.745  π-loss=5.965  V-loss=35.582
+[EP  550] loss=23.393  π-loss=5.914  V-loss=34.979
+[EP  600] loss=23.392  π-loss=5.914  V-loss=34.977
+[EP  650] loss=23.729  π-loss=5.963  V-loss=35.555
+[EP  700] loss=19.223  π-loss=5.282  V-loss=27.902
+[EP  750] loss=23.380  π-loss=5.912  V-loss=34.957
+[EP  800] loss=22.415  π-loss=5.771  V-loss=33.309
+[EP  850] loss=23.302  π-loss=5.901  V-loss=34.823
+[EP  900] loss=23.189  π-loss=5.885  V-loss=34.631
+[EP  950] loss=20.859  π-loss=5.538  V-loss=30.665
+[EP 1000] loss=22.222  π-loss=5.743  V-loss=32.981
+[EP 1050] loss=23.295  π-loss=5.900  V-loss=34.811
+[EP 1100] loss=21.630  π-loss=5.654  V-loss=31.973
+[EP 1150] loss=22.857  π-loss=5.836  V-loss=34.063
+[EP 1200] loss=18.543  π-loss=5.173  V-loss=26.762
+[EP 1250] loss=21.258  π-loss=5.598  V-loss=31.341
+[EP 1300] loss=20.230  π-loss=5.441  V-loss=29.601
+[EP 1350] loss=23.399  π-loss=5.915  V-loss=34.989
+[EP 1400] loss=20.345  π-loss=5.459  V-loss=29.795
+[EP 1450] loss=23.195  π-loss=5.886  V-loss=34.641
+[EP 1500] loss=23.185  π-loss=5.884  V-loss=34.623
+[EP 1550] loss=23.607  π-loss=5.945  V-loss=35.346
+[EP 1600] loss=23.604  π-loss=5.945  V-loss=35.341
+[EP 1650] loss=22.963  π-loss=5.852  V-loss=34.244
+[EP 1700] loss=22.844  π-loss=5.834  V-loss=34.041
+[EP 1750] loss=19.720  π-loss=5.361  V-loss=28.740
+[EP 1800] loss=22.306  π-loss=5.755  V-loss=33.123
+[EP 1850] loss=22.101  π-loss=5.725  V-loss=32.773
+[EP 1900] loss=22.840  π-loss=5.834  V-loss=34.035
+[EP 1950] loss=24.081  π-loss=6.013  V-loss=36.157
+──────── Evaluation ────────
+Wins 358 | Ties 642 | Bot wins   0
+Average score  Player   4.31   Bot  -2.15
+###############################
+end time: 2025-06-09 20:29:11.078526
+elapsed time: 0:00:20.028871
