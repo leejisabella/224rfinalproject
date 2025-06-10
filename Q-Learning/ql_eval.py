@@ -42,7 +42,7 @@ def get_discrete_state(player_hand, current_card):
             state_vec.extend([0] * 52)
 
     state_vec.extend(encode_card(current_card))
-    return tuple(state_vec)  # tuple for hashable key
+    return tuple(state_vec)
 
 def get_valid_actions(player_hand):
     return [i for i, pos in enumerate(positions)
@@ -50,7 +50,7 @@ def get_valid_actions(player_hand):
 
 def select_action(state, valid_actions):
     if not valid_actions:
-        return None  # No valid action available
+        return None
     q_vals = [Q[(state, a)] for a in valid_actions]
     max_q = max(q_vals)
     best_actions = [a for a, q in zip(valid_actions, q_vals) if q == max_q]

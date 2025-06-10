@@ -1,8 +1,12 @@
 # Advancing Multi-Agent Reasoning in Open-Face Chinese Poker
 
+### CS 224R: Deep Reinforcement Learning
+
+**By: Alice Guo, Ramya Iyer, Isabella Lee**
+
 ## Motivation
 
-While reinforcement learning (RL) has been extensively studied in games like No-Limit Texas Hold’em poker, Open-Face Chinese Poker (OFCP) remains largely unexplored. OFCP presents unique challenges due to its **sparse reward system** and **complex hand dynamics**. This paper investigates RL methods of **Deep Q-Learning**, **Proximal Policy Optimization (PPO)**, and **Monte Carlo Tree Search (MCTS)** to see if it can be effective for OFCP.
+While reinforcement learning (RL) has been extensively studied in games like No-Limit Texas Hold’em poker, **Open-Face Chinese Poker (OFCP)** remains largely unexplored. OFCP presents unique challenges due to its sparse reward system and complex hand dynamics. This paper investigates RL methods of **Deep Q-Learning**, **Proximal Policy Optimization (PPO)**, and **Monte Carlo Tree Search (MCTS)** to see if it can be effective for OFCP.
 
 ## Methods
 
@@ -12,8 +16,8 @@ We implemented and compared several RL algorithms in a **self-play environment**
 
 - **Q-Learning** Baseline method due to small state spaces.
 - **Deep Q-Learning** Inspired by Tan and Xiao (2018) implementation of DQN for OFCP.
-- **Double DQN**: reduces overestimation bias by decoupling action selection and evaluation.
-- **Dueling DQN**: separates the network into value and advantage streams for more precise Q-value approximation.
+- **Double DQN**: Reduces overestimation bias by decoupling action selection and evaluation.
+- **Dueling DQN**: Separates the network into value and advantage streams for more precise Q-value approximation.
 
 ### PPO (Proximal Policy Optimization)
 
@@ -41,11 +45,11 @@ We implemented and compared several RL algorithms in a **self-play environment**
 | ---------- | ---------------- | ------------ | --------------- | --------------------------- |
 | **MCTS**   | **89%**          | 3%           | 11.2            | 447 minutes                 |
 | PPO + GAE  | 41%              | 0%           | 5.02            | 20 seconds                  |
-| Double DQN | 35%              | 23%          | 3.50            | 4m 16s                      |
+| Double DQN | 35%              | 23%          | 3.50            | 4 minutes 16 seconds        |
 
 - **MCTS** outperformed other methods with the highest win rate and points, but incurred a significant computational cost (~200x slower than PPO).
 - PPO demonstrated competitive performance with much faster evaluation.
-- Q-learning methods were less effective overall but still outperformed random play.
+- Double Deep Q-learning methods were less effective overall but still outperformed random play (Q-learning & DQN didn't outperform random play).
 
 ## Discussion and Conclusion
 
